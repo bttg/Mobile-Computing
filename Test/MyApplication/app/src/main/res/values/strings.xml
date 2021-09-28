@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="no_settings_str">"Got some new expenditures, "</string>
+</resources>
