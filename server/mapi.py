@@ -7,31 +7,19 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-#注册页面
+#signup function
 @app.route('/api/signup', methods=['POST'])
 def signup():
     data = request.get_data()
     data = json.loads(data)
 
-    #存入数据库
+    #store in the db
     acc = data['account']
     nickname = data['nickname']
     password = data['password']
     email = data['email']
-
-    mdb.signup(acc,nickname,password,email)
-
-
-
-    #数据库交互
-
-
-
-    #判断
-    status='True'
-    result = json.dumps({'status':status})
+    result = mdb.signup(acc,nickname,password,email)
     return result
-
 
 
 
@@ -41,16 +29,9 @@ def login():
     data = request.get_data()
     data = json.loads(data)
 
-    #存入数据库
     acc = data['account']
     password = data['password']
-
-
-    #数据库交互
-
-    #判断
-    status='dlTrue'
-    result = json.dumps({'status':status})
+    result = mdb.login(acc,password)
     return result
 
 
