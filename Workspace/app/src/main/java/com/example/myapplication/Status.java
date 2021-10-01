@@ -1,9 +1,9 @@
 package com.example.myapplication;
 
 public class Status {
-    private String status;
+    private int code;
 
-    public String getStatus(){
-        return status;
+    public int getStatus(){
+        return this.code;
     }
 }

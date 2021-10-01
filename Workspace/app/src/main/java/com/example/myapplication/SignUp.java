@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +12,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -61,13 +63,20 @@ public class SignUp extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                MediaType JSON = MediaType.parse("application/json;charset=utf-8");
                 try {
-                    RequestBody requestBody = new FormBody.Builder()
-                            .add("account", username)
-                            .add("nickname", nickname)
-                            .add("password", password)
-                            .add("email", email)
-                            .build();
+                    SignRequest requestbdy = new SignRequest();
+                    requestbdy.setAccount(username);
+                    requestbdy.setpwd(password);
+                    requestbdy.setnnm(nickname);
+                    requestbdy.setemail(email);
+//                    RequestBody requestBody = new FormBody.Builder()
+//                            .add("account", username)
+//                            .add("nickname", nickname)
+//                            .add("password", password)
+//                            .add("email", email)
+//                            .build();
+                    RequestBody requestBody = RequestBody.create(JSON, String.valueOf(parseRequestBody(requestbdy)));
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             .url("http://139.180.180.99:8888/api/signup")
@@ -75,13 +84,18 @@ public class SignUp extends AppCompatActivity {
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
+                    Log.d("printout",responseData);
                     if(parseJson(responseData)){
+                        Looper.prepare();
                         Toast.makeText(SignUp.this, "Success", Toast.LENGTH_LONG).show();
                         finish();
+                        Looper.loop();
                     }
                     else {
+                        Looper.prepare();
                         Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
                         finish();
+                        Looper.loop();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -93,13 +107,17 @@ public class SignUp extends AppCompatActivity {
     private boolean parseJson(String json) {
         Gson gson = new Gson();
         Status result = gson.fromJson(json, Status.class);
-        if (result.getStatus().equals("True")){
+        if (result.getStatus()==0){
             return true;
         }
         else
             return false;
     }
 
-
+    private String parseRequestBody(SignRequest request) {
+        Gson gson = new Gson();
+        String json = gson.toJson(request);
+        return json;
+    }
 
 }
