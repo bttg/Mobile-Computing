@@ -85,15 +85,20 @@ public class SignUp extends AppCompatActivity {
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     Log.d("printout",responseData);
-                    if(parseJson(responseData)){
+                    if(parseJson(responseData)==200){
                         Looper.prepare();
                         Toast.makeText(SignUp.this, "Success", Toast.LENGTH_LONG).show();
                         finish();
                         Looper.loop();
                     }
+                    else if (parseJson(responseData)==201){
+                        Looper.prepare();
+                        Toast.makeText(SignUp.this, "Failed: The username existed", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
                     else {
                         Looper.prepare();
-                        Toast.makeText(SignUp.this, "Failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignUp.this, "Failed: Unknown error, try again later", Toast.LENGTH_LONG).show();
                         finish();
                         Looper.loop();
                     }
@@ -104,14 +109,10 @@ public class SignUp extends AppCompatActivity {
         }).start();
     }
 
-    private boolean parseJson(String json) {
+    private int parseJson(String json) {
         Gson gson = new Gson();
         Status result = gson.fromJson(json, Status.class);
-        if (result.getStatus()==200){
-            return true;
-        }
-        else
-            return false;
+        return result.getStatus();
     }
 
     private String parseRequestBody(SignRequest request) {
