@@ -107,7 +107,7 @@ public class SignUp extends AppCompatActivity {
     private boolean parseJson(String json) {
         Gson gson = new Gson();
         Status result = gson.fromJson(json, Status.class);
-        if (result.getStatus()==0){
+        if (result.getStatus()==200){
             return true;
         }
         else

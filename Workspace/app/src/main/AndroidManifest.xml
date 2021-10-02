@@ -14,9 +14,11 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".Welcome"
+            android:label="Money"
             android:exported="true" />
         <activity
             android:name=".SignUp"
+            android:label="Money"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

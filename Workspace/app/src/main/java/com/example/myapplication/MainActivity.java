@@ -79,16 +79,21 @@ public class MainActivity extends AppCompatActivity {
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
 //                    Log.d("printout",responseData);
-                    if(parseJson(responseData)){
+                    if(parseJson(responseData)==200){
                         Looper.prepare();
                         Intent intent = new Intent(MainActivity.this, Welcome.class);
+                        intent.putExtra("username", username);
                         startActivity(intent);
                         Looper.loop();
                     }
-                    else {
+                    else if (parseJson(responseData)==202){
                         Looper.prepare();
-                        Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_LONG).show();
-                        finish();
+                        Toast.makeText(MainActivity.this, "Failed: Can't find the user.", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
+                    else if (parseJson(responseData) == 203){
+                        Looper.prepare();
+                        Toast.makeText(MainActivity.this, "Failed: Wrong password.", Toast.LENGTH_LONG).show();
                         Looper.loop();
                     }
                 } catch (Exception e){
@@ -98,14 +103,10 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private boolean parseJson(String json) {
+    private int parseJson(String json) {
         Gson gson = new Gson();
         Status result = gson.fromJson(json, Status.class);
-        if (result.getStatus()==0){
-            return true;
-        }
-        else
-            return false;
+        return result.getStatus();
     }
 
     private String parseRequestBody(SignRequest request) {
