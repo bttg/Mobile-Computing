@@ -21,8 +21,9 @@ Where code means the status of the operations:
 **NOTE: All the codes are INTEGERS**
 ```
 code = 200 : success
-code = 201 : cannot find the user
-code = 202 : wrong password
+code = 201 : the user already exists
+code = 202 : cannot find the user
+code = 203 : wrong password
 ...
 code = 400 : something wrong with server
 ```
