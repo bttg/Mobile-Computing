@@ -1,8 +1,5 @@
 import json
-import time
-from datetime import datetime
 import mobile_database as mdb
-
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
