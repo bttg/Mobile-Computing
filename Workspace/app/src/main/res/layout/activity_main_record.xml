@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--软件主界面显示    -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey_F3F3F3">
+
+
+    <!--软件主界面最上面一行布局-->
+    <RelativeLayout
+        android:id="@+id/main_top_layout"
+        android:layout_height="100dp"
+        android:layout_width="match_parent">
+        <TextView
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            android:gravity="center"
+            android:padding="10dp"
+            />
+    </RelativeLayout>
+    <!--最上面一行布局下方显示所有记录信息-->
+    <!--每一项之间设置间隔，并隐藏分割线-->
+    <ListView
+        android:id="@+id/main_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_top_layout"
+        android:padding="10dp"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:scrollbars="none"
+        />
+
+    <ImageButton
+        android:id="@+id/main_btn_more_function"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/more_function"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/main_morefuc_bg"
+        />
+
+    <Button
+        android:id="@+id/main_recordone"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="@string/record_onemore"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignBottom="@id/main_btn_more_function"
+        android:background="@drawable/main_record_bg"
+        android:layout_toLeftOf="@id/main_btn_more_function"
+        />
+
+
+
+
+</RelativeLayout>

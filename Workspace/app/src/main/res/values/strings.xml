@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Bookkeeping</string>
+    <string name="record_onemore">Record</string>
+    <string name="expenditrue">Expenditrue</string>
+    <string name="income">Income</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
