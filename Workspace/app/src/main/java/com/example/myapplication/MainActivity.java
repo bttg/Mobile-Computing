@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -79,19 +82,23 @@ public class MainActivity extends AppCompatActivity {
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
 //                    Log.d("printout",responseData);
-                    if(parseJson(responseData)==200){
+                    if(parseJson(responseData).get("status").equals("200")){
+                        String nickname = (String) parseJson(responseData).get("nickname");
+                        String email = (String) parseJson(responseData).get("email");
                         Looper.prepare();
                         Intent intent = new Intent(MainActivity.this, Welcome.class);
                         intent.putExtra("username", username);
+                        intent.putExtra("nickname", nickname);
+                        intent.putExtra("email", email);
                         startActivity(intent);
                         Looper.loop();
                     }
-                    else if (parseJson(responseData)==202){
+                    else if (parseJson(responseData).get("status").equals("202")){
                         Looper.prepare();
                         Toast.makeText(MainActivity.this, "Failed: Can't find the user.", Toast.LENGTH_LONG).show();
                         Looper.loop();
                     }
-                    else if (parseJson(responseData) == 203){
+                    else if (parseJson(responseData).get("status").equals("203")){
                         Looper.prepare();
                         Toast.makeText(MainActivity.this, "Failed: Wrong password.", Toast.LENGTH_LONG).show();
                         Looper.loop();
@@ -103,10 +110,23 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
-    private int parseJson(String json) {
+    private Map parseJson(String json) {
         Gson gson = new Gson();
-        Status result = gson.fromJson(json, Status.class);
-        return result.getStatus();
+        LoginHandler result = gson.fromJson(json, LoginHandler.class);
+        if (result.getStatus() == 200) {
+            String nickname = result.getNickname();
+            String email = result.getEmail();
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("status", "200");
+            map.put("nickname", nickname);
+            map.put("email", email);
+            return map;
+        }
+        else {
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("status", String.valueOf(result.getStatus()));
+            return map;
+        }
     }
 
     private String parseRequestBody(SignRequest request) {
