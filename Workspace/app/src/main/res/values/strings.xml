@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="record_onemore">Record</string>
+    <string name="expenditrue">Expenditrue</string>
+    <string name="income">Income</string>
+    
+
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -9,4 +14,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>
