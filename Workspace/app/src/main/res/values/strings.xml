@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Bookkeeping</string>
     <string name="record_onemore">Record</string>
     <string name="expenditrue">Expenditrue</string>
     <string name="income">Income</string>

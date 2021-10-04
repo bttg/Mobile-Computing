@@ -8,8 +8,8 @@
     <RelativeLayout
         android:id="@+id/recordactivity_fragment_relativelayout_toplayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:layout_height="45dp"
+        android:padding="5dp"
         android:background="@color/white">
 
         <ImageView

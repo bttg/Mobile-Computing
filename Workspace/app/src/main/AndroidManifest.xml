@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".MainPageForRecord"
+            android:exported="true" />
+        <activity
             android:name=".RecordActivity"
             android:exported="true" />
         <activity
