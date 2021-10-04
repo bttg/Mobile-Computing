@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--设置主界面记账按钮的形状-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/blue_3399FF"/>
+    <corners android:radius="20dp"/>
+
+</shape>
