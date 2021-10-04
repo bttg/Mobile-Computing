@@ -2,12 +2,91 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_F3F3F3">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/recordactivity_fragment_relativelayout_toplayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/recordactivity_fragment_relativelayout_topimage"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/ic_others_fs" />
+
+        <TextView
+            android:id="@+id/recordactivity_fragment_relativelayout_typetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Others"
+            android:layout_toRightOf="@id/recordactivity_fragment_relativelayout_topimage"
+            android:layout_centerVertical="true" />
+
+        <EditText
+            android:id="@+id/recordactivity_fragment_relativelayout_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="number"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <View
+        android:id="@+id/recordactivity_fragment_relativelayout_templine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/recordactivity_fragment_relativelayout_toplayout"
+        android:background="@color/white"/>
+    <GridView
+        android:id="@+id/recordactivity_fragment_relativelayout_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:numColumns="4"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:layout_below="@id/recordactivity_fragment_relativelayout_templine"/>
+    <RelativeLayout
+        android:id="@+id/recordactivity_fragment_relativelayout_commentanddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/recordactivity_fragment_relativelayout_keyboard"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/recordactivity_fragment_relativelayout_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/recordactivity_fragment_relativelayout_time"
+            android:text="Add comment..."
+            android:padding="8dp"/>
+        <TextView
+            android:id="@+id/recordactivity_fragment_relativelayout_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2021.10.4 18:08"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"/>
+    </RelativeLayout>
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/recordactivity_fragment_relativelayout_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:keyBackground="@color/grey_F3F3F3"
+        android:keyTextColor="@color/black"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_alignParentBottom="true"
+        android:shadowColor="@color/white"
+        android:shadowRadius="0.0"/>
 
 </RelativeLayout>
