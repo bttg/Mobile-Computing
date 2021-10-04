@@ -5,7 +5,13 @@
       <map>
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_morefuc_bg.xml" value="0.24814814814814815" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_record_bg.xml" value="0.24814814814814815" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main.xml" value="0.16485507246376813" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main_record.xml" value="0.12132725430597771" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_record.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/content_main.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_expenditure.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_first.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_second.xml" value="0.12335359675785208" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_listview.xml" value="0.12132725430597771" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_toplayout.xml" value="0.12132725430597771" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.296195652173913" />
@@ -16,7 +22,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
