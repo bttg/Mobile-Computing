@@ -18,18 +18,19 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
+
         <TextView
             android:id="@+id/item_main_toplayout_expenditure_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_main_toplayout_expenditure_title"
             android:layout_marginTop="10dp"
-            android:text="$ 1000"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
+            android:gravity="center_horizontal"
             android:paddingLeft="40dp"
-            android:gravity="center_horizontal"/>
+            android:text="$ 1000"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/item_main_toplayout_hide"
@@ -49,19 +50,20 @@
             android:textStyle="bold"
             android:paddingRight="45dp"
             android:textColor="@color/black"/>
+
         <TextView
             android:id="@+id/item_main_toplayout_income_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@id/item_main_toplayout_expenditure_title"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:text="$ 1000"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
+            android:gravity="center_horizontal"
             android:paddingRight="45dp"
-            android:gravity="center_horizontal"/>
+            android:text="$ 1000"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>

@@ -1,16 +1,16 @@
 package com.example.myapplication.database;
 
 //Class of specific types of income or expenditure
-public class Record_typeforOne {
+public class Record_TypeforEachOne {
     int identity;
-    int id_for_notselcted;
+    int id_for_notselected;
     int id_for_selected;
     String  image_name;
     int expenseorincome;
 
-    public Record_typeforOne(int identity, int id_for_notselcted, int id_for_selected, String image_name, int expenseorincome) {
+    public Record_TypeforEachOne(int identity, int id_for_notselected, int id_for_selected, String image_name, int expenseorincome) {
         this.identity = identity;
-        this.id_for_notselcted = id_for_notselcted;
+        this.id_for_notselected = id_for_notselected;
         this.id_for_selected = id_for_selected;
         this.image_name = image_name;
         this.expenseorincome = expenseorincome;
@@ -24,12 +24,12 @@ public class Record_typeforOne {
         this.identity = identity;
     }
 
-    public int getId_for_notselcted() {
-        return id_for_notselcted;
+    public int getId_for_notselected() {
+        return id_for_notselected;
     }
 
-    public void setId_for_notselcted(int id_for_notselcted) {
-        this.id_for_notselcted = id_for_notselcted;
+    public void setId_for_notselected(int id_for_notselected) {
+        this.id_for_notselected = id_for_notselected;
     }
 
     public int getId_for_selected() {
@@ -56,6 +56,6 @@ public class Record_typeforOne {
         this.expenseorincome = expenseorincome;
     }
 
-    public Record_typeforOne() {
+    public Record_TypeforEachOne() {
     }
 }
