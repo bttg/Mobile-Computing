@@ -19,7 +19,7 @@ public class ManageDatabase {
         sqLiteDatabase = databaseForRecordOperation.getWritableDatabase();
     }
 
-    //读取数据库当中的数据，写入内存集合里
+    //Read the data in the database and write it to the memory collection
     //
 
     public static List<Record_TypeforEachOne> getRecord_TypeforEachOneList(int expenseorincome){
@@ -38,8 +38,9 @@ public class ManageDatabase {
             int id_for_selected = cursor.getInt(temp_id_for_selected);
             int temp_expenseorincome = cursor.getColumnIndex("expenseorincome");
             int expenseorincome1 = cursor.getInt(temp_expenseorincome);
+            Record_TypeforEachOne record_typeforEachOne = new Record_TypeforEachOne(identity, id_for_notselected, id_for_selected, image_name, expenseorincome1);
+            list.add(record_typeforEachOne);
         }
-
         return list;
     }
 }

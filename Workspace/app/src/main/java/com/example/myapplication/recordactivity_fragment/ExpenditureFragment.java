@@ -8,13 +8,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.database.ManageDatabase;
+import com.example.myapplication.database.Record_TypeforEachOne;
 import com.example.myapplication.util.Utils_KeyboardView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -40,6 +46,8 @@ public class ExpenditureFragment extends Fragment {
     TextView textViewforcomment;
     TextView textViewfortime;
     GridView gridViewforttype;
+    List<Record_TypeforEachOne> typelist;
+    private AdapterForRecordType adapter;
 
 //
 //    public ExpenditureFragment() {
@@ -79,7 +87,37 @@ public class ExpenditureFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_expenditure, container, false);
         initialView(view);
+        //Fill the GridView with data
+        fillGridView();
+        //Set the click event of each item in the GridView
+        setGridViewPressOnClickListener();
         return view;
+    }
+
+    private void setGridViewPressOnClickListener() {
+        gridViewforttype.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                adapter.ifSelectedPosition = i;
+                adapter.notifyDataSetInvalidated();
+
+                Record_TypeforEachOne record_typeforEachOne = typelist.get(i);
+                String image_name = record_typeforEachOne.getImage_name();
+                textViewfortype.setText(image_name);
+                int id_for_selected = record_typeforEachOne.getId_for_selected();
+                imageviewfortype.setImageResource(id_for_selected);
+            }
+        });
+    }
+
+    private void fillGridView() {
+        typelist = new ArrayList<>();
+        adapter = new AdapterForRecordType(getContext(), typelist);
+        gridViewforttype.setAdapter(adapter);
+        //获取数据库中的数据源
+        List<Record_TypeforEachOne> outlist = ManageDatabase.getRecord_TypeforEachOneList(0);
+        typelist.addAll(outlist);
+        adapter.notifyDataSetChanged();
     }
 
     private void initialView(View view) {
