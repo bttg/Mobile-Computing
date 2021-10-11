@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@color/white">
+    <EditText
+        android:id="@+id/comment_input_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Add_comment"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="15sp"
+        android:background="@color/white">
+        <requestFocus/>
+    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/comment_input_edittext"
+        android:padding="10dp">
+        <Button
+            android:id="@+id/comment_input_button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:background="@drawable/comment_button_bg"
+            android:textStyle="bold"
+            android:textColor="@color/blue_3399FF"
+            android:layout_marginRight="6dp"/>
+        <Button
+            android:id="@+id/comment_input_button_ensure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ensure"
+            android:background="@drawable/main_record_bg"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginRight="6dp"/>
+
+
+    </LinearLayout>
+</RelativeLayout>
