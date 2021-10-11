@@ -1,76 +1,141 @@
 package com.example.myapplication;
 
-import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import com.google.gson.Gson;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
+import java.util.HashMap;
+import java.util.Map;
 
-import android.view.Menu;
-import android.view.MenuItem;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button login_button = (Button) findViewById(R.id.login);
+        Button signup_button = (Button) findViewById(R.id.signup);
+        EditText username_input = (EditText) findViewById(R.id.username_input);
+        EditText password_input = (EditText) findViewById(R.id.password_input);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                login_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String username = username_input.getText().toString();
+                        String password = password_input.getText().toString();
+                        if (username.equals("")) {
+                            Toast.makeText(MainActivity.this, "Username can't be none!", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (password.equals("")) {
+                            Toast.makeText(MainActivity.this, "Password can't be none!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            sendRequestWithOkhttp(username, password);
+                        }
+                    }
+                });
+            }
+        });
+
+        signup_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intent);
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void sendRequestWithOkhttp(String username, String password){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+                try {
+                    SignRequest requestbdy = new SignRequest();
+                    requestbdy.setAccount(username);
+                    requestbdy.setpwd(password);
+                    RequestBody requestBody = RequestBody.create(JSON, String.valueOf(parseRequestBody(requestbdy)));
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://139.180.180.99:8888/api/login")
+                            .post(requestBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+//                    Log.d("printout",responseData);
+                    if(parseJson(responseData).get("status").equals("200")){
+                        String id = (String) parseJson(responseData).get("id");
+                        String nickname = (String) parseJson(responseData).get("nickname");
+                        String email = (String) parseJson(responseData).get("email");
+                        Looper.prepare();
+                        Intent intent = new Intent(MainActivity.this, Welcome.class);
+                        intent.putExtra("username", username);
+                        intent.putExtra("nickname", nickname);
+                        intent.putExtra("email", email);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                        Looper.loop();
+                    }
+                    else if (parseJson(responseData).get("status").equals("202")){
+                        Looper.prepare();
+                        Toast.makeText(MainActivity.this, "Failed: Can't find the user.", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
+                    else if (parseJson(responseData).get("status").equals("203")){
+                        Looper.prepare();
+                        Toast.makeText(MainActivity.this, "Failed: Wrong password.", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    private Map parseJson(String json) {
+        Gson gson = new Gson();
+        LoginHandler result = gson.fromJson(json, LoginHandler.class);
+        if (result.getStatus() == 200) {
+            String nickname = result.getNickname();
+            String email = result.getEmail();
+            String id = String.valueOf(result.getID());
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("status", "200");
+            map.put("nickname", nickname);
+            map.put("email", email);
+            map.put("id", id);
+            return map;
         }
-
-        return super.onOptionsItemSelected(item);
+        else {
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put("status", String.valueOf(result.getStatus()));
+            return map;
+        }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+    private String parseRequestBody(SignRequest request) {
+        Gson gson = new Gson();
+        String json = gson.toJson(request);
+        return json;
     }
 }
