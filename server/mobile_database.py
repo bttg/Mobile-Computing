@@ -58,11 +58,12 @@ def login(acc, password):
                 # login successes, return the user info
                 res['code'] = 200
 
-                code = """SELECT nickname, email FROM users WHERE account='%s';""" % (acc)
+                code = """SELECT nickname, email, id FROM users WHERE account='%s';""" % (acc)
                 cursor.execute(code)
                 result = cursor.fetchone()
                 res['nickname'] = result[0]
-                res['email'] = result [1]
+                res['email'] = result[1]
+                res['id'] = result[2]
 
             else:
                 # wrong password
