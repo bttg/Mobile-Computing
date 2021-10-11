@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/comment_button_bg.xml" value="0.26564102564102565" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26564102564102565" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_morefuc_bg.xml" value="0.24814814814814815" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_record_bg.xml" value="0.24814814814814815" />
@@ -10,9 +11,11 @@
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main_page_for_record.xml" value="0.23324275362318841" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main_record.xml" value="0.12132725430597771" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_record.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/comment_input.xml" value="0.20471014492753623" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/content_main.xml" value="0.23324275362318841" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/expenditure_fragment_gridview.xml" value="0.22871376811594202" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_expenditure.xml" value="0.23324275362318841" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_expenditure2.xml" value="0.20471014492753623" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_first.xml" value="0.23324275362318841" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_second.xml" value="0.12335359675785208" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_listview.xml" value="0.12132725430597771" />

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.myapplication.adapter.AdapterforRecordFragandViewPager;
 import com.example.myapplication.recordactivity_fragment.ExpenditureFragment;
+import com.example.myapplication.recordactivity_fragment.ParentFragment;
 import com.example.myapplication.recordactivity_fragment.IncomeFragment;
 import com.google.android.material.tabs.TabLayout;
 
