@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 public class LoginHandler extends Status{
-    private String id="";
+    private int id=0;
     private String nickname="";
     private String email="";
 
@@ -14,5 +14,5 @@ public class LoginHandler extends Status{
     public int getStatus() {
         return super.getStatus();
     }
-    public String getID() {return id;}
+    public int getID() {return id;}
 }

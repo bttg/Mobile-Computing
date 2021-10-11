@@ -118,10 +118,12 @@ public class MainActivity extends AppCompatActivity {
         if (result.getStatus() == 200) {
             String nickname = result.getNickname();
             String email = result.getEmail();
+            String id = String.valueOf(result.getID());
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("status", "200");
             map.put("nickname", nickname);
             map.put("email", email);
+            map.put("id", id);
             return map;
         }
         else {

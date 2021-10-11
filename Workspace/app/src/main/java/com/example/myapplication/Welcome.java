@@ -16,7 +16,8 @@ public class Welcome extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         String nickname = intent.getStringExtra("nickname");
         String email = intent.getStringExtra("email");
+        String id = intent.getStringExtra("id");
         TextView welcome_msg = (TextView) findViewById(R.id.welcome_msg);
-        welcome_msg.setText(nickname);
+        welcome_msg.setText(id);
     }
 }
