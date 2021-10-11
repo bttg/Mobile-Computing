@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     String responseData = response.body().string();
 //                    Log.d("printout",responseData);
                     if(parseJson(responseData).get("status").equals("200")){
+                        String id = (String) parseJson(responseData).get("id");
                         String nickname = (String) parseJson(responseData).get("nickname");
                         String email = (String) parseJson(responseData).get("email");
                         Looper.prepare();
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("username", username);
                         intent.putExtra("nickname", nickname);
                         intent.putExtra("email", email);
+                        intent.putExtra("id", id);
                         startActivity(intent);
                         Looper.loop();
                     }
