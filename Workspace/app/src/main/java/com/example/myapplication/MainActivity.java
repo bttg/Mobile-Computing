@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     String responseData = response.body().string();
 //                    Log.d("printout",responseData);
                     if(parseJson(responseData).get("status").equals("200")){
+                        String id = (String) parseJson(responseData).get("id");
                         String nickname = (String) parseJson(responseData).get("nickname");
                         String email = (String) parseJson(responseData).get("email");
                         Looper.prepare();
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("username", username);
                         intent.putExtra("nickname", nickname);
                         intent.putExtra("email", email);
+                        intent.putExtra("id", id);
                         startActivity(intent);
                         Looper.loop();
                     }
@@ -116,10 +118,12 @@ public class MainActivity extends AppCompatActivity {
         if (result.getStatus() == 200) {
             String nickname = result.getNickname();
             String email = result.getEmail();
+            String id = String.valueOf(result.getID());
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("status", "200");
             map.put("nickname", nickname);
             map.put("email", email);
+            map.put("id", id);
             return map;
         }
         else {
@@ -134,6 +138,4 @@ public class MainActivity extends AppCompatActivity {
         String json = gson.toJson(request);
         return json;
     }
-
-
 }
