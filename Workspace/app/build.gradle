@@ -3,16 +3,18 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.myapplication"
         minSdk 21
-        targetSdk 31
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        targetSdkVersion 30
     }
 
     buildTypes {
@@ -45,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation("com.squareup.okhttp3:okhttp:4.9.2")
     implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 }
