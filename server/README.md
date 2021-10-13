@@ -1,4 +1,4 @@
-# API usage guide V1.1 by zzh
+# API usage guide V1.2 by zzh
 ## Details
 * URL：http://139.180.180.99:8888/api
 * All the post requests should be **json form** as following:
@@ -34,9 +34,10 @@ code = 400 : something wrong with server
 * password: password
 
 ### get:
-* code: code
+* code: code (int)
 * nickname: nickname
 * email: email
+* id: id
 
 
 ## /signup
@@ -45,6 +46,17 @@ code = 400 : something wrong with server
 * nickname: nickname
 * password: password
 * email: email
+
+### get:
+* code: code
+
+## /bookkeeping
+### post:
+* id: id (int)
+* expenditure: **Positive for expenditure, Negative for income** (double)
+* address: address(string)
+* comment: comment
+* tag: tag (eg: education, food and so on...)
 
 ### get:
 * code: code
