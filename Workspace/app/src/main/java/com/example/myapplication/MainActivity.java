@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         Button signup_button = (Button) findViewById(R.id.signup);
         EditText username_input = (EditText) findViewById(R.id.username_input);
         EditText password_input = (EditText) findViewById(R.id.password_input);
-
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
