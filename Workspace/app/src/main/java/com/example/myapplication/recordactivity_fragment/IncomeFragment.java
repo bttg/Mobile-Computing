@@ -29,7 +29,8 @@ public class IncomeFragment extends ParentFragment {
 
     @Override
     public void sentdatatoserver() {
+//        dataTypeForStore.setExpenseorincome(1);
         dataTypeForStore.setExpenseorincome(1);
-
+        //需要在这里把数据发到服务器
     }
 }

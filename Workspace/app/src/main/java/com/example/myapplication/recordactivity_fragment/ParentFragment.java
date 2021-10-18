@@ -21,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.database.DataTypeForStore;
 import com.example.myapplication.database.Record_TypeforEachOne;
+import com.example.myapplication.util.Utils_Comment;
 import com.example.myapplication.util.Utils_KeyboardView;
 
 import java.text.SimpleDateFormat;

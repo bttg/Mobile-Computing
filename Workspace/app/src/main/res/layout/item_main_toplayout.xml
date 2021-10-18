@@ -8,12 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="20dp">
+        android:padding="10dp">
         <TextView
             android:id="@+id/item_main_toplayout_expenditure_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:paddingLeft="5dp"
             android:text="@string/expenditrue"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -26,7 +26,7 @@
             android:layout_below="@id/item_main_toplayout_expenditure_title"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:paddingLeft="40dp"
+            android:paddingLeft="25dp"
             android:text="$ 1000"
             android:textColor="@color/black"
             android:textSize="26sp"
@@ -36,9 +36,8 @@
             android:id="@+id/item_main_toplayout_hide"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/ih_hide"/>
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ih_hide" />
 
         <TextView
             android:id="@+id/item_main_toplayout_income_title"
@@ -48,7 +47,7 @@
             android:text="@string/income"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:paddingRight="45dp"
+            android:paddingRight="25dp"
             android:textColor="@color/black"/>
 
         <TextView
@@ -59,7 +58,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
-            android:paddingRight="45dp"
+            android:paddingRight="25dp"
             android:text="$ 1000"
             android:textColor="@color/black"
             android:textSize="26sp"
