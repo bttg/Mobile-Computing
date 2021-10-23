@@ -73,3 +73,44 @@ def login(acc, password):
 
     db.close()
     return json.dumps(res)
+
+def bookkeeping(id, expenditure, EOI, imageID, comment, tag, address):
+    db = MySQLdb.connect(host="localhost", user="root", passwd="19970224lL@", db="mobile_db", charset='utf8')
+    cursor = db.cursor()
+    res = {'code': 400}
+    code = """INSERT INTO bookkeeping(id, expenditure, EOI, imageID, comment, tag, address)
+                   VALUES ('%d','%.2f','%d','%d','%s','%s','%s');""" % (id, expenditure, EOI, imageID, comment, tag, address)
+    try:
+        cursor.execute(code)
+        db.commit()
+        res['code'] = 200
+
+    except:
+        # something wrong with server
+        db.rollback()
+        res['code'] = 400
+
+    db.close()
+    return json.dumps(res)
+
+def dataVisual(id):
+    db = MySQLdb.connect(host="localhost", user="root", passwd="19970224lL@", db="mobile_db", charset='utf8')
+    cursor = db.cursor()
+    code = 'SELECT `expenditure`, `tag` FROM `bookkeeping` WHERE id=%d'%(id)
+    try:
+        cursor.execute(code)
+        result = cursor.fetchall()
+        resdict={}
+
+        for i in result:
+            if i[1] not in resdict.keys():
+                resdict[i[1]] = 0
+            else:
+                resdict[i[1]] += i[0]
+
+
+        res = {'code': 200, 'data' : resdict}
+    except:
+        res = {'code': 400}
+
+    return res
