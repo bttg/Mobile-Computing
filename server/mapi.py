@@ -32,7 +32,30 @@ def login():
     return result
 
 
+@app.route('/api/bookkeeping', methods=['POST'])
+def bookkeeping():
+    data = request.get_data()
+    data = json.loads(data)
 
+    id = data['id']
+    expenditure = data['expenditure']
+    EOI=data['EOI']
+    imageID = data['imageID']
+    comment = data['comment']
+    tag = data['tag']
+    address = data['address']
+    result = mdb.bookkeeping(id, expenditure, EOI, imageID, comment, tag, address)
+
+    return result
+
+@app.route('/api/dataVisual', methods=['POST'])
+def dataVisual():
+    data = request.get_data()
+    data = json.loads(data)
+    id = data['id']
+    result = mdb.dataVisual(id)
+
+    return result
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8888, debug=True)
