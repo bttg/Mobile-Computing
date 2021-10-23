@@ -1,4 +1,4 @@
-# API usage guide V1.2 by zzh
+# API usage guide V1.3 beta by zzh
 ## Details
 * URL：http://139.180.180.99:8888/api
 * All the post requests should be **json form** as following:
@@ -53,10 +53,50 @@ code = 400 : something wrong with server
 ## /bookkeeping
 ### post:
 * id: id (int)
-* expenditure: **Positive for expenditure, Negative for income** (double)
+* expenditure: expenditure (unsigned float)
+* EOI: EOI(int) {0: expenditure, 1: income}
+* imageID: imageID(int)
 * address: address(string)
-* comment: comment
-* tag: tag (eg: education, food and so on...)
+* comment: comment(eg: I ate a burger) (string)
+* tag: tag (eg: education, food and so on...) (string)
 
 ### get:
-* code: code
+* code: code {200 or 400}
+
+## /getMonthlyRecord
+get a monthly report.
+### post:
+* id: id(int)
+
+### get:
+* expenditure: expenditure (unsigned float)
+* EOI: EOI(int) {0: expenditure, 1: income}
+* imageID: imageID(int)
+* address: address(string)
+* comment: comment(eg: I ate a burger) (string)
+* tag: tag (eg: education, food and so on...) (string)
+
+* {"data":[{e,EOI,imageID,add,c,tag},{e,EOI,imageID,add,c,tag},{e,EOI,imageID,add,c,tag}....],"code":200 or 400 (int)}
+
+## /dataVisual
+get monthly data.
+### post:
+* id: id
+
+### get:
+{"data":[{"tag":"edu","money":money(float)}, {"tag":"csgo","money":money(float)}], "code":200 or 400(int)}
+
+## /editUserDate:
+### post:
+* id:id
+
+### get:
+* nickname: nickname (string)
+* code:code (int)
+
+
+
+
+
+
+
