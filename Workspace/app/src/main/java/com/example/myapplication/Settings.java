@@ -50,7 +50,7 @@ public class Settings extends AppCompatActivity {
 
     Switch sw_locationsupdates, sw_gps;
 
-    protected String locationString;
+    protected String addressString;
     //variable to remember if we are tracking location or nah
     boolean updateOn = false;
 
@@ -136,7 +136,7 @@ public class Settings extends AppCompatActivity {
         });
 
 
-        locationString =  updateGPS();
+        addressString =  updateGPS();
         btn_bkp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,9 +144,13 @@ public class Settings extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String username = "bzq";
+                        int expenseOrIncome = 1;
+                        int  imageId = 2;
                         String costClassification = "sex";
-                        double money = -999;
+                        float money = -999;
                         String comments = "tongue by tongue therapy";
+                        double lag = 1.0;
+                        double lng = 1.0;
                         //if (username.equals("")) {
                           //  Toast.makeText(MainActivity.this, "Username can't be none!", Toast.LENGTH_SHORT).show();
                         //}
@@ -154,7 +158,8 @@ public class Settings extends AppCompatActivity {
                           //  Toast.makeText(MainActivity.this, "Password can't be none!", Toast.LENGTH_SHORT).show();
                         //}
                         //else {
-                        sendRequestWithOkhttp(username, locationString, "sex", money, comments);
+                        sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, "sex", money, comments,lag,lng);
+//                        String username, int expenseOrIncome, int imageId,String address, String tag, float money, String comments, double lat, double lng
                         //sendRequestWithOkhttp(username, locationString, costClassification, money, comments);
 
                         //}
@@ -227,7 +232,7 @@ public class Settings extends AppCompatActivity {
                     //bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
 
                     if(location!=null) {
-                        locationString = updateUIValues(location);
+                        addressString = updateUIValues(location);
 
                     }
 
@@ -243,7 +248,7 @@ public class Settings extends AppCompatActivity {
                 requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_FINE_LOCATION);
             }
         }
-        return locationString;
+        return addressString;
 
     }
 
@@ -275,7 +280,7 @@ public class Settings extends AppCompatActivity {
             tv_lat.setText("State / 省: " + addresses.get(0).getAdminArea());
             tv_lon.setText("地址: " + addresses.get(0).getAddressLine(0));
             //addresses.get(0).getFeatureName() 国内是 比如深圳： 南山区/福田区等等
-            locationString = addresses.get(0).getAddressLine(0);
+            addressString = addresses.get(0).getAddressLine(0);
 
 
         }
@@ -283,11 +288,11 @@ public class Settings extends AppCompatActivity {
             tv_address.setText("Unable to get street address");
         }
 
-        return locationString;
+        return addressString;
 
     }
 
-    private void sendRequestWithOkhttp(String username, String locationString, String costClassification, double money, String comments){
+    private void sendRequestWithOkhttp(String username, int expenseOrIncome, int imageId,String address, String tag, float money, String comments, double lat, double lng){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -295,10 +300,14 @@ public class Settings extends AppCompatActivity {
                 try {
                     BookkeepingRequest bkpRequest = new BookkeepingRequest();
                     bkpRequest.setId(250);
-                    bkpRequest.setAddress(locationString);
-                    bkpRequest.setTag(costClassification); //"AssWhopping"
+                    bkpRequest.setExpenseOrIncome(expenseOrIncome);
+                    bkpRequest.setImageId(imageId);
+                    bkpRequest.setAddress(address);
+                    bkpRequest.setTag(tag); //"AssWhopping"
                     bkpRequest.setExpenditure(money); //-500
                     bkpRequest.setComment(comments);
+                    bkpRequest.setLat(lat);
+                    bkpRequest.setLng(lng);
 //                    RequestBody requestBody = new FormBody.Builder()
 //                            .add("account", username)
 //                            .add("nickname", nickname)
