@@ -1,22 +1,12 @@
 package com.example.myapplication.recordactivity_fragment;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Looper;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.myapplication.BookkeepingRequest;
-import com.example.myapplication.MainActivity;
-import com.example.myapplication.MainPageForRecord;
 import com.example.myapplication.R;
 import com.example.myapplication.RecordActivity;
-import com.example.myapplication.Settings;
 import com.example.myapplication.Status;
 import com.example.myapplication.database.ManageDatabase;
 import com.example.myapplication.database.Record_TypeforEachOne;
@@ -48,7 +38,7 @@ public class ExpenditureFragment extends ParentFragment {
     @Override
     public void sentdatatoserver() {
         dataTypeForStore.setExpenseorincome(0);
-        MainPageForRecord mainPageForRecord = (MainPageForRecord) getActivity();
+        RecordActivity mainPageForRecord = (RecordActivity) getActivity();
         String tempusername = mainPageForRecord.sendUsername();
         dataTypeForStore.setUsername(tempusername);
 
@@ -74,8 +64,8 @@ public class ExpenditureFragment extends ParentFragment {
                 try {
                     BookkeepingRequest bkpRequest = new BookkeepingRequest();
                     bkpRequest.setId(250);
-                    bkpRequest.setExpenseOrIncome(expenseOrIncome);
-                    bkpRequest.setImageId(imageId);
+                    bkpRequest.setEOI(expenseOrIncome);
+                    bkpRequest.setImageID(imageId);
                     bkpRequest.setAddress(address);
                     bkpRequest.setTag(tag); //"AssWhopping"
                     bkpRequest.setExpenditure(money); //-500

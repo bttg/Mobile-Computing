@@ -300,8 +300,8 @@ public class Settings extends AppCompatActivity {
                 try {
                     BookkeepingRequest bkpRequest = new BookkeepingRequest();
                     bkpRequest.setId(250);
-                    bkpRequest.setExpenseOrIncome(expenseOrIncome);
-                    bkpRequest.setImageId(imageId);
+                    bkpRequest.setEOI(expenseOrIncome);
+                    bkpRequest.setImageID(imageId);
                     bkpRequest.setAddress(address);
                     bkpRequest.setTag(tag); //"AssWhopping"
                     bkpRequest.setExpenditure(money); //-500

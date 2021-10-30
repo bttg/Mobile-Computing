@@ -5,8 +5,8 @@ package com.example.myapplication;
 public class BookkeepingRequest {
     private int id;
     private float expenditure;
-    private int expenseOrIncome;
-    private int imageId;
+    private int EOI;
+    private int imageID;
     private String address;
     private String tag;
     private String comment;
@@ -29,8 +29,8 @@ public class BookkeepingRequest {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    public void setExpenseOrIncome(int expenseOrIncome) { this.expenseOrIncome = expenseOrIncome; }
-    public void setImageId(int imageId) { this.imageId = imageId; }
+    public void setEOI(int EOI) { this.EOI = EOI; }
+    public void setImageID(int imageID) { this.imageID = imageID; }
     public void setLat(double lat) { this.lat = lat; }
     public void setLng(double lng) { this.lng = lng; }
 

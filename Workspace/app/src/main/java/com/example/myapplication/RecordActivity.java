@@ -56,5 +56,10 @@ public class RecordActivity extends AppCompatActivity {
                 break;
         }
     }
+    public String sendUsername(){
+        return MainPageForRecord.inputusername;
+    }
+
+
 
 }
