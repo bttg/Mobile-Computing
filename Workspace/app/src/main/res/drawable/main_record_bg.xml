@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Set the shape of the accounting button on the main interface-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/blue_3399FF"/>
+    <corners android:radius="20dp"/>
+
+</shape>

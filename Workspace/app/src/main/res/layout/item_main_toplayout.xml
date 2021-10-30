@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grey_F3F3F3">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/item_main_toplayout_expenditure_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/expenditrue"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/item_main_toplayout_expenditure_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_main_toplayout_expenditure_title"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="25dp"
+            android:text="$ 1000"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/item_main_toplayout_hide"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ih_hide" />
+
+        <TextView
+            android:id="@+id/item_main_toplayout_income_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/income"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingRight="25dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/item_main_toplayout_income_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_main_toplayout_expenditure_title"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:paddingRight="25dp"
+            android:text="$ 1000"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

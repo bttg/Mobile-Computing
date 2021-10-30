@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+<!--    <string name="app_name">My Application</string>-->
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -18,4 +18,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="app_name">Bookkeeping</string>
+    <string name="record_onemore">Record</string>
+    <string name="expenditrue">Expenditrue</string>
+    <string name="income">Income</string>
+    <string name="Add_comment">Add comment</string>
+    <string name="ensure">Ensure</string>
+    <string name="cancel">Cancel</string>
 </resources>
