@@ -5,11 +5,12 @@
     android:layout_margin="15dp"
     android:padding="10dp"
     android:background="@color/white">
+
     <ImageView
         android:id="@+id/item_main_listview_imageview"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/ic_drink_fs"/>
+        android:src="@mipmap/ic_drink_fs" />
 
     <LinearLayout
         android:layout_width="wrap_content"

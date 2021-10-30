@@ -32,6 +32,8 @@ public class ExpenditureFragment extends ParentFragment {
     @Override
     public void sentdatatoserver() {
         dataTypeForStore.setExpenseorincome(0);
+
         //在这里把数据发到服务器
+
     }
 }

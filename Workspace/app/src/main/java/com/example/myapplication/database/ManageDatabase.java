@@ -43,4 +43,12 @@ public class ManageDatabase {
         }
         return list;
     }
+
+    public static float getmoneyonemonth(int year, int month, int kind){
+        float total = 0.0f;
+
+        return total;
+    }
+
+
 }

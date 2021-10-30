@@ -11,13 +11,13 @@ public class DataTypeForStore {
     int month;
     int day;
     int expenseorincome;
-    String gpslongtitude;
-    String gpslatitude;
+    String gpsaddress;
+    String username;
 
     public DataTypeForStore() {
     }
 
-    public DataTypeForStore(int identity, String image_name, int id_for_selected, String comment, float moneyaccount, String time, int year, int month, int day, int expenseorincome, String gpslongtitude, String gpslatitude) {
+    public DataTypeForStore(int identity, String image_name, int id_for_selected, String comment, float moneyaccount, String time, int year, int month, int day, int expenseorincome, String gpsaddress, String username) {
         this.identity = identity;
         this.image_name = image_name;
         this.id_for_selected = id_for_selected;
@@ -28,8 +28,8 @@ public class DataTypeForStore {
         this.month = month;
         this.day = day;
         this.expenseorincome = expenseorincome;
-        this.gpslongtitude = gpslongtitude;
-        this.gpslatitude = gpslatitude;
+        this.gpsaddress = gpsaddress;
+        this.username = username;
     }
 
     public int getIdentity() {
@@ -112,19 +112,19 @@ public class DataTypeForStore {
         this.expenseorincome = expenseorincome;
     }
 
-    public String getGpslongtitude() {
-        return gpslongtitude;
+    public String getGpsaddress() {
+        return gpsaddress;
     }
 
-    public void setGpslongtitude(String gpslongtitude) {
-        this.gpslongtitude = gpslongtitude;
+    public void setGpsaddress(String gpsaddress) {
+        this.gpsaddress = gpsaddress;
     }
 
-    public String getGpslatitude() {
-        return gpslatitude;
+    public String getUsername() {
+        return username;
     }
 
-    public void setGpslatitude(String gpslatitude) {
-        this.gpslatitude = gpslatitude;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
