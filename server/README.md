@@ -95,8 +95,17 @@ get monthly data.
 * code:code (int)
 
 
+## /heatMap
+### post:
+* id (int)
+
+### get:
+Note: only send the expenditure to the client (EOI=0)
+* {"data":[{expenditure, tag, lat, lng},{expenditure, tag, lat, lng},{expenditure, tag, lat, lng}....],"code":200 or 400 (int)}
 
 
+
+ 
 
 
 
