@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         String nickname = (String) parseJson(responseData).get("nickname");
                         String email = (String) parseJson(responseData).get("email");
                         Looper.prepare();
-                        Intent intent = new Intent(MainActivity.this, Welcome.class);
+                        Intent intent = new Intent(MainActivity.this, MainPageForRecord.class);
                         intent.putExtra("username", username);
                         intent.putExtra("nickname", nickname);
                         intent.putExtra("email", email);

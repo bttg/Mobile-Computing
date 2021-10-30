@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.MainActivity;
+import com.example.myapplication.MainPageForRecord;
 import com.example.myapplication.R;
 import com.example.myapplication.database.ManageDatabase;
 import com.example.myapplication.database.Record_TypeforEachOne;
@@ -32,6 +34,9 @@ public class ExpenditureFragment extends ParentFragment {
     @Override
     public void sentdatatoserver() {
         dataTypeForStore.setExpenseorincome(0);
+        MainPageForRecord mainPageForRecord = (MainPageForRecord) getActivity();
+        String tempusername = mainPageForRecord.sendUsername();
+        dataTypeForStore.setUsername(tempusername);
 
         //在这里把数据发到服务器
 

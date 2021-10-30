@@ -13,6 +13,8 @@ import com.example.myapplication.adapter.AdapterforAccount;
 import com.example.myapplication.database.DataTypeForStore;
 import com.example.myapplication.database.ManageDatabase;
 import com.example.myapplication.database.Record_TypeforEachOne;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,6 +28,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     int year;
     int month;
     int day;
+    public static String inputusername;
 
     //头布局相关控件
     View headerView;
@@ -38,6 +41,14 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_for_record);
+
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=b8e23876");
+        Intent intent = getIntent();
+        inputusername = intent.getStringExtra("username");
+
+
+
+
         initTime();
         todaylistview = findViewById(R.id.main_lv);
         //添加ListView的头布局
@@ -101,6 +112,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         }
     }
 
+    public String sendUsername(){
+        return inputusername;
+    }
 
     @Override
     public void onClick(View view) {

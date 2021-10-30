@@ -29,6 +29,7 @@
             android:name=".Settings"
             android:label="Settings"
             android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -39,6 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainPageForRecord"
+            android:exported="true" />
+        <activity
+            android:name=".RecordActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
