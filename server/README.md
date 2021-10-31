@@ -50,6 +50,16 @@ code = 400 : something wrong with server
 ### get:
 * code: code
 
+## /modifyUser
+### post:
+* id: id (int)
+* newNickname: newNickname (String), if no new nickname, please submit empty string ""
+* newPassword: newPassword (String), if no new password, please submit empty string ""
+* newEmail: newEmail (String), if no new email, please submit empty string ""
+
+### get:
+* code: 200 or 400
+
 ## /bookkeeping
 ### post:
 * id: id (int)

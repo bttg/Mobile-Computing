@@ -107,6 +107,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
                 startActivity(intent2);
                 break;
             case R.id.main_btn_more_function:
+                Intent intent3 = new Intent(this, Function.class);
+                intent3.putExtra("username", inputusername);
+                startActivity(intent3);
 
                 break;
         }
