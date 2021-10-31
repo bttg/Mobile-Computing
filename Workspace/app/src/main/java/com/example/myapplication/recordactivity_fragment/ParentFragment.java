@@ -191,7 +191,18 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             case R.id.recordactivity_fragment_relativelayout_comment:
                 makedialogvisible();
 
+            case R.id.recordactivity_fragment_relativelayout_maplabel:
+                getGpsAddress();
+
+            case R.id.recordactivity_fragment_relativelayout_microphone:
+
+                break;
         }
+    }
+
+    private void getGpsAddress() {
+
+
     }
 
     public void makedialogvisible() {

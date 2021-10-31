@@ -3,11 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_eidt_profile.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/activity_function.xml" value="0.23020833333333332" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main_page_for_record.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_record.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_settings.xml" value="0.21331521739130435" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_sign_up.xml" value="0.21331521739130435" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_welcome.xml" value="0.21331521739130435" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/comment_input.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/content_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/expenditure_fragment_gridview.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_expenditure.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_first.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/fragment_second.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_listview.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_toplayout.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/menu/menu_main.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2489139554207937" />
-        <entry key="app/src/main/res/layout/activity_pie_chart.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.296195652173913" />
