@@ -74,14 +74,20 @@
             android:id="@+id/recordactivity_fragment_relativelayout_microphone"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:src="@mipmap/it_microphone"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/it_microphone" />
+        <ImageButton
+            android:id="@+id/recordactivity_fragment_relativelayout_maplabel"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_toLeftOf="@id/recordactivity_fragment_relativelayout_microphone"
+            android:src="@mipmap/it_maplabel"/>
         <TextView
             android:id="@+id/recordactivity_fragment_relativelayout_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2021.10.4 18:08"
-            android:layout_toLeftOf="@id/recordactivity_fragment_relativelayout_microphone"
+            android:layout_toLeftOf="@id/recordactivity_fragment_relativelayout_maplabel"
             android:padding="8dp"/>
     </RelativeLayout>
 
