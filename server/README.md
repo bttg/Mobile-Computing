@@ -1,4 +1,4 @@
-# API usage guide V1.3 beta by zzh
+# API usage guide V1.5 by zzh
 ## Details
 * URL：http://139.180.180.99:8888/api
 * All the post requests should be **json form** as following:
@@ -69,6 +69,8 @@ code = 400 : something wrong with server
 * address: address(string)
 * comment: comment(eg: I ate a burger) (string)
 * tag: tag (eg: education, food and so on...) (string)
+* lat: lat (float)
+* lng: lng (float)
 
 ### get:
 * code: code {200 or 400}
