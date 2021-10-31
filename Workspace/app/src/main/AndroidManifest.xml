@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
@@ -18,18 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".Welcome"
-            android:label="Money"
+            android:name=".PieChartActivity"
             android:exported="true" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Function"
+            android:exported="true" />
+        <activity
+            android:name=".Welcome"
+            android:exported="true"
+            android:label="Money" />
         <activity
             android:name=".SignUp"
-            android:label="Money"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Money" />
         <activity
             android:name=".Settings"
-            android:label="Settings"
-            android:exported="true" />
-
+            android:exported="true"
+            android:label="Settings" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
