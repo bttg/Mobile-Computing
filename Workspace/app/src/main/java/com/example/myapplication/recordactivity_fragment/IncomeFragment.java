@@ -56,7 +56,12 @@ public class IncomeFragment extends ParentFragment {
         String tag = dataTypeForStore.getImage_name();
         float money = dataTypeForStore.getMoneyaccount();
         String addressString = "no Address";
-        String comments = dataTypeForStore.getComment();
+        String comments;
+        if (dataTypeForStore.getComment() == null){
+            comments = "";
+        }else{
+            comments = dataTypeForStore.getComment();
+        }
         double lat = -1000;
         double lng = -1000;
         sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lat,lng);

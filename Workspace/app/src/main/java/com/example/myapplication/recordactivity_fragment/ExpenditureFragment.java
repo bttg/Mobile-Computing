@@ -49,7 +49,12 @@ public class ExpenditureFragment extends ParentFragment {
         String tag = dataTypeForStore.getImage_name();
         float money = dataTypeForStore.getMoneyaccount();
         String addressString = dataTypeForStore.getGpsaddress();
-        String comments = dataTypeForStore.getComment();
+        String comments;
+        if (dataTypeForStore.getComment() == null){
+            comments = "";
+        }else{
+            comments = dataTypeForStore.getComment();
+        }
         double lat = dataTypeForStore.getLat();
         double lng = dataTypeForStore.getLng();
         sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lat,lng);
