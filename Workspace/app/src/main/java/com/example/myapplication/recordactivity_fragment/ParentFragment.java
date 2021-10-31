@@ -255,9 +255,6 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             case R.id.recordactivity_fragment_relativelayout_comment:
                 makedialogvisible();
 
-            case R.id.recordactivity_fragment_relativelayout_maplabel:
-                updateGPS();
-
             case R.id.recordactivity_fragment_relativelayout_microphone:
 
                 break;
@@ -346,7 +343,6 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             //update all text view objects with a new location
             //tv_lat.setText(String.valueOf(location.getLatitude()));
             //tv_lat.setText(String.valueOf(location.getLatitude()));
-
             //tv_lon.setText(String.valueOf(location.getLongitude()));
             //tv_accuracy.setText(String.valueOf(location.getAccuracy()));
             Toast.makeText(getActivity(),String.valueOf(location.getLongitude()), Toast.LENGTH_LONG).show();
@@ -360,9 +356,10 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
                 //tv_lon.setText("地址: " + addresses.get(0).getAddressLine(0));
                 //addresses.get(0).getFeatureName() 国内是 比如深圳： 南山区/福田区等等
                 addressString = addresses.get(0).getAddressLine(0);
+                dataTypeForStore.setGpsaddress(addressString);
+                dataTypeForStore.setLat(location.getLatitude());
+                dataTypeForStore.setLng(location.getLongitude());
                 Toast.makeText(getActivity(),addressString, Toast.LENGTH_LONG).show();
-
-
             }
             catch (Exception e) {
                 Toast.makeText(getActivity(),"Unable to get street address, check GPS/ WiFi/ Cellular", Toast.LENGTH_LONG).show();
@@ -375,12 +372,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             //tv_lon.setText("Null Location");
             //tv_accuracy.setText("Null Location");
             Toast.makeText(getActivity(),"Null location, wait a bit more!", Toast.LENGTH_LONG).show();
-
-
         }
-
-
-
         return addressString;
 
     }

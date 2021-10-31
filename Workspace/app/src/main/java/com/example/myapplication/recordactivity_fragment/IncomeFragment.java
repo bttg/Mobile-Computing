@@ -55,11 +55,11 @@ public class IncomeFragment extends ParentFragment {
         int  imageId = dataTypeForStore.getId_for_selected();
         String tag = dataTypeForStore.getImage_name();
         float money = dataTypeForStore.getMoneyaccount();
-        String addressString = "laozhujia";
+        String addressString = "no Address";
         String comments = dataTypeForStore.getComment();
-        double lag = 1.0;
-        double lng = 1.0;
-        sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lag,lng);
+        double lat = -1000;
+        double lng = -1000;
+        sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lat,lng);
     }
 
     private void sendRequestWithOkhttp(String username, int expenseOrIncome, int imageId,String address, String tag, float money, String comments, double lat, double lng){

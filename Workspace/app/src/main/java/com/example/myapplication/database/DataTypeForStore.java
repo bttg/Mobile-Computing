@@ -13,11 +13,13 @@ public class DataTypeForStore {
     int expenseorincome;
     String gpsaddress;
     String username;
+    double lat;
+    double lng;
 
     public DataTypeForStore() {
     }
 
-    public DataTypeForStore(int identity, String image_name, int id_for_selected, String comment, float moneyaccount, String time, int year, int month, int day, int expenseorincome, String gpsaddress, String username) {
+    public DataTypeForStore(int identity, String image_name, int id_for_selected, String comment, float moneyaccount, String time, int year, int month, int day, int expenseorincome, String gpsaddress, String username, double lat, double lng) {
         this.identity = identity;
         this.image_name = image_name;
         this.id_for_selected = id_for_selected;
@@ -30,6 +32,8 @@ public class DataTypeForStore {
         this.expenseorincome = expenseorincome;
         this.gpsaddress = gpsaddress;
         this.username = username;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public int getIdentity() {
@@ -127,4 +131,12 @@ public class DataTypeForStore {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public double getLat() { return lat; }
+
+    public void setLat(double lat) { this.lat = lat; }
+
+    public double getLng() { return lng; }
+
+    public void setLng(double lng) { this.lng = lng; }
 }
