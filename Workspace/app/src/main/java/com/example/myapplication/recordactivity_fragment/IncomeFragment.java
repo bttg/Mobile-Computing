@@ -50,13 +50,13 @@ public class IncomeFragment extends ParentFragment {
         dataTypeForStore.setUsername(tempusername);
 
         //在这里把数据发到服务器
-        String username = "bzq";
-        int expenseOrIncome = 1;
-        int  imageId = 2;
-        String tag = "sex";
-        float money = 999;
+        String username = dataTypeForStore.getUsername();
+        int expenseOrIncome = dataTypeForStore.getExpenseorincome();
+        int  imageId = dataTypeForStore.getId_for_selected();
+        String tag = dataTypeForStore.getImage_name();
+        float money = dataTypeForStore.getMoneyaccount();
         String addressString = "laozhujia";
-        String comments = "tongue by tongue therapy";
+        String comments = dataTypeForStore.getComment();
         double lag = 1.0;
         double lng = 1.0;
         sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lag,lng);
