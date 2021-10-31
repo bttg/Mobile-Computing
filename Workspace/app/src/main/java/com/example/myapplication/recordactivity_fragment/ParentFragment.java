@@ -1,10 +1,17 @@
 package com.example.myapplication.recordactivity_fragment;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.inputmethodservice.KeyboardView;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -18,19 +25,31 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.Settings;
 import com.example.myapplication.database.DataTypeForStore;
 import com.example.myapplication.database.Record_TypeforEachOne;
 import com.example.myapplication.util.Utils_Comment;
 import com.example.myapplication.util.Utils_KeyboardView;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -38,7 +57,7 @@ import java.util.List;
 // * create an instance of this fragment.
 // */
 //Expense module in the record page
-public abstract class ParentFragment extends Fragment implements View.OnClickListener{
+public abstract class ParentFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +79,22 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
     AdapterForRecordType adapter;
     DataTypeForStore dataTypeForStore;//Save the data that needs to be inserted into the database in object format
 
-//
+    private static final int PERMISSIONS_FINE_LOCATION = 99; //arbitrary choice
+
+    protected String addressString;
+    //variable to remember if we are tracking location or nah
+    boolean updateOn = false;
+
+    //Google's API for location services
+    FusedLocationProviderClient fusedLocationProviderClient;
+
+    //Location Request is a config file for all settings related to FusedLocationProviderClient
+    LocationRequest locationRequest;
+
+    LocationCallback locationCallback;
+
+
+    //
 //    public ParentFragment() {
 //        // Required empty public constructor
 //    }
@@ -89,7 +123,36 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         dataTypeForStore = new DataTypeForStore();
         dataTypeForStore.setImage_name("Others");
         dataTypeForStore.setId_for_selected(R.mipmap.ic_others_fs);
-    }
+
+        //set all properties of location request
+        locationRequest = new LocationRequest();
+
+        //how often does the location check occur at default?
+        locationRequest.setInterval(1000 * 30);
+
+        //most frequent update for location request
+        locationRequest.setFastestInterval(1000 * 5);
+
+        //Only use approximate locations
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+
+        // event that is triggered whenever update interval is met
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull @NotNull LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+
+                //save the location
+                Location location = locationResult.getLastLocation();
+                updateUIValues(locationResult.getLastLocation());
+
+
+            }
+        };
+
+        addressString = updateGPS();
+
+    } //end of onCreate
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,7 +167,8 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         setGridViewPressOnClickListener();
         return view;
     }
-//Get the current time and display it on the interface
+
+    //Get the current time and display it on the interface
     private void initialTime() {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
@@ -114,7 +178,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
 
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH)+1;
+        int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         dataTypeForStore.setYear(year);
         dataTypeForStore.setMonth(month);
@@ -157,7 +221,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         textViewfortime.setOnClickListener(this);
 
         //Let the custom keyboard show up
-        Utils_KeyboardView keyboradutils = new Utils_KeyboardView(customkeyboardview,edittextformoney);
+        Utils_KeyboardView keyboradutils = new Utils_KeyboardView(customkeyboardview, edittextformoney);
         keyboradutils.make_keyboard_visible();
         //Set up the interface, listen to the confirmation button is clicked
         keyboradutils.setPressOKListener(new Utils_KeyboardView.PressOKListener() {
@@ -165,7 +229,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             public void PressOK() {
                 //Get the amount of input money
                 String moneystring = edittextformoney.getText().toString();
-                if (moneystring.equals("0") || TextUtils.isEmpty(moneystring)){
+                if (moneystring.equals("0") || TextUtils.isEmpty(moneystring)) {
                     getActivity().finish();
                     return;
                 }
@@ -184,7 +248,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.recordactivity_fragment_relativelayout_time:
 
                 break;
@@ -192,7 +256,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
                 makedialogvisible();
 
             case R.id.recordactivity_fragment_relativelayout_maplabel:
-                getGpsAddress();
+                updateGPS();
 
             case R.id.recordactivity_fragment_relativelayout_microphone:
 
@@ -200,8 +264,124 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         }
     }
 
+    //GPS Stuff
     private void getGpsAddress() {
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
+        updateGPS();
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case PERMISSIONS_FINE_LOCATION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    updateGPS();
+                }
+                else {
+                    Toast.makeText(getActivity(),"The app requires your permission for location T_T", Toast.LENGTH_LONG).show();
+                    getActivity().finish(); //exit program, I THINK
+                }
+                break;
+        }
+    }
+
+    private String updateGPS() {
+        //Get permission to track GPS
+        //Get current location from the fused client
+        // update the UI / textView
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            //User provided the permission
+            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    // we got permission. put the values of location into the UI elements
+
+                    //locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                    //criteria = new Criteria();
+                    //bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
+
+                    if(location!=null) {
+                        addressString = updateUIValues(location);
+
+                    }else {
+                        Toast.makeText(getActivity(),"Null location, wait a bit more!", Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+            });
+        }
+        else {
+            // don't have permission yet
+
+            //first check android version
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_FINE_LOCATION);
+            }
+        }
+        return addressString;
+
+    }
+
+    private String updateUIValues(Location location) {
+
+        if(location!=null) {
+            //update all text view objects with a new location
+            //tv_lat.setText(String.valueOf(location.getLatitude()));
+            //tv_lat.setText(String.valueOf(location.getLatitude()));
+
+            //tv_lon.setText(String.valueOf(location.getLongitude()));
+            //tv_accuracy.setText(String.valueOf(location.getAccuracy()));
+            Toast.makeText(getActivity(),String.valueOf(location.getLongitude()), Toast.LENGTH_LONG).show();
+            Geocoder geocoder = new Geocoder(getActivity());
+            try {
+                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(),1);
+                //tv_address.setText(addresses.get(0).getAddressLine(0));
+                //tv_address.setText("City / 城市: " + addresses.get(0).getLocality());
+
+                //tv_lat.setText("State / 省: " + addresses.get(0).getAdminArea());
+                //tv_lon.setText("地址: " + addresses.get(0).getAddressLine(0));
+                //addresses.get(0).getFeatureName() 国内是 比如深圳： 南山区/福田区等等
+                addressString = addresses.get(0).getAddressLine(0);
+                Toast.makeText(getActivity(),addressString, Toast.LENGTH_LONG).show();
+
+
+            }
+            catch (Exception e) {
+                Toast.makeText(getActivity(),"Unable to get street address, check GPS/ WiFi/ Cellular", Toast.LENGTH_LONG).show();
+                //tv_address.setText("Unable to get street address");
+            }
+
+        } else {
+            //tv_updates.setText("Null Location");
+            //tv_lat.setText("Null Location");
+            //tv_lon.setText("Null Location");
+            //tv_accuracy.setText("Null Location");
+            Toast.makeText(getActivity(),"Null location, wait a bit more!", Toast.LENGTH_LONG).show();
+
+
+        }
+
+
+
+        return addressString;
 
     }
 

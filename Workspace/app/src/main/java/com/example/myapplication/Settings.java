@@ -167,7 +167,7 @@ public class Settings extends AppCompatActivity {
                 });
             }
         });
-    }
+    } //end of onCreate
 
 
     private void stopLocationUpdates() {
