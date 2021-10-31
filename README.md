@@ -27,7 +27,7 @@ The deliverable of the task is an Android App with a set of functions for financ
 ## Work Breakdown
 
 * Signup, login and logout: Yifan Ma
-* Location support: Zikang Luo
+* Location support & Expense Cluster Map: Zikang Luo
 * Booking: Yiwei Guo & Yuxuan Liang
 * Data visualization: Yang Shen
 * Database support & server operation: Zihao Zhu
