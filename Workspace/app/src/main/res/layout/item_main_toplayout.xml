@@ -37,7 +37,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/ih_hide" />
+            android:src="@mipmap/it_moneylabel" />
 
         <TextView
             android:id="@+id/item_main_toplayout_income_title"
@@ -63,8 +63,50 @@
             android:textColor="@color/black"
             android:textSize="26sp"
             android:textStyle="bold" />
-
-
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <ImageButton
+            android:id="@+id/main_btn_map"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/it_maplabel"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:onClick="onButtonClick"
+            />
+
+        <Button
+            android:id="@+id/main_record"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/main_btn_map"
+            android:layout_toRightOf="@id/main_btn_map"
+            android:background="@drawable/main_record_bg"
+            android:gravity="center"
+            android:layout_marginLeft="80dp"
+            android:onClick="onButtonClick"
+            android:text="@string/record_onemore"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/main_btn_more_func"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/more_function"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:onClick="onButtonClick"
+            android:background="@drawable/main_morefuc_bg"
+            />
+        
+        
+    </RelativeLayout>
+        
 
 </LinearLayout>

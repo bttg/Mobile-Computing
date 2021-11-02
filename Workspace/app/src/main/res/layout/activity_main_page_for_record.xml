@@ -15,15 +15,26 @@
         android:layout_height="60dp"
         android:layout_width="match_parent">
         <TextView
-            android:text="@string/app_name"
+            android:id="@+id/main_top_text_hello"
+            android:text="Hello, "
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:padding="10dp"
             />
+        <TextView
+            android:id="@+id/main_top_text_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/main_top_text_hello"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"/>
     </RelativeLayout>
     <!--All record information is displayed below the top line layout-->
     <!--Set an interval between each item and hide the dividing line-->
@@ -37,30 +48,6 @@
         android:padding="10dp"
         android:scrollbars="none" />
 
-    <ImageButton
-        android:id="@+id/main_btn_more_function"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@mipmap/more_function"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="40dp"
-        android:onClick="onButtonClick"
-        android:background="@drawable/main_morefuc_bg"
-        />
 
-    <Button
-        android:id="@+id/main_recordone"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_alignBottom="@id/main_btn_more_function"
-        android:layout_toLeftOf="@id/main_btn_more_function"
-        android:background="@drawable/main_record_bg"
-        android:gravity="center"
-        android:onClick="onButtonClick"
-        android:text="@string/record_onemore"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

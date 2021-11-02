@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,6 +48,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     TextView topIncomeNumber;
     TextView topOutcomeNumber;
     ImageView topShowImageView;
+    ImageButton maplabel;
+    ImageButton morefuction;
+    Button recordone;
 
 
     @Override
@@ -82,6 +87,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         topIncomeNumber = headerView.findViewById(R.id.item_main_toplayout_income_number);
         topOutcomeNumber = headerView.findViewById(R.id.item_main_toplayout_expenditure_number);
         topShowImageView = headerView.findViewById(R.id.item_main_toplayout_hide);
+        maplabel = headerView.findViewById(R.id.main_btn_map);
+        morefuction = headerView.findViewById(R.id.main_btn_more_func);
+        recordone = headerView.findViewById(R.id.main_record);
     }
 
     //The method that will be called when the activity gets the focus
@@ -170,14 +178,16 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
 
     public void onButtonClick(View view) {
         switch (view.getId()) {
-            case R.id.main_recordone:
+            case R.id.main_record:
                 Intent intent2 = new Intent(this, RecordActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.main_btn_more_function:
+            case R.id.main_btn_more_func:
                 Intent intent3 = new Intent(this, Function.class);
                 intent3.putExtra("username", inputusername);
                 startActivity(intent3);
+                break;
+            case R.id.main_btn_map:
 
                 break;
         }
