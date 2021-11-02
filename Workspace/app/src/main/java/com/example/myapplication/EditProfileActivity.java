@@ -46,6 +46,9 @@ public class EditProfileActivity extends AppCompatActivity
         Log.v("new nickname",newName);
         Log.v("new password",newPass);
         Log.v("new email",newEmail);
+
+        Intent intent = new Intent(this,MainPageForRecord.class);
+        intent.putExtra("newNickname",newName);
     }
     private void sendRequestWithOkhttp(int username){
         new Thread(new Runnable() {
@@ -90,4 +93,7 @@ public class EditProfileActivity extends AppCompatActivity
         String json = gson.toJson(request);
         return json;
     }
+
+
+
 }
