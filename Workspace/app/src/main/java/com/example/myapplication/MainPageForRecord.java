@@ -124,7 +124,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
             e.printStackTrace();
         }
         Intent intent = getIntent();
-        nickname = intent.getStringExtra("newNickname");
+        if (nickname==null)
+        {
+            nickname = intent.getStringExtra("newNickname");
+        }
+
         topnickname.setText(nickname);
         loadServerData();
         setTopTextviewShow();
