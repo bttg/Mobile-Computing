@@ -26,6 +26,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("nickname", nickname);
                         intent.putExtra("email", email);
                         intent.putExtra("id", id);
+
                         startActivity(intent);
                         Looper.loop();
                     }

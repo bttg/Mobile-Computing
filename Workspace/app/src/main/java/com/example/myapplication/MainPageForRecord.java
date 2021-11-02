@@ -45,6 +45,8 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     public static String nickname;
     public static DataHandler datahandler;
 
+    public static globalVariable gv;
+
     //头布局相关控件
     View headerView;
     TextView topIncomeNumber;
@@ -65,6 +67,13 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         inputusername = intent.getStringExtra("id");
         nickname =  intent.getStringExtra("nickname");
+
+        if (inputusername!=null)
+        {
+            gv = new globalVariable(inputusername);
+        }
+
+
         initTime();
         todaylistview = findViewById(R.id.main_lv);
         topnickname = findViewById(R.id.main_top_text_nickname);
@@ -102,6 +111,12 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (inputusername==null)
+        {
+            inputusername = gv.getFixedID();
+        }
+
         sendRequestWithOkhttp(Integer.valueOf(inputusername));
         try {
             TimeUnit.SECONDS.sleep(1);
