@@ -116,7 +116,16 @@ Note: only send the expenditure to the client (EOI=0)
 * {"data":[{expenditure, tag, lat, lng},{expenditure, tag, lat, lng},{expenditure, tag, lat, lng}....],"code":200 or 400 (int)}
 
 
+## /fetchData
+fetch (max :30)
+### post:
+* id: id
 
+### get:
+* code: code
+* income: income(Stirng .2f)
+* expenditure : expenditure (String, .2f)
+* data: [{money, date, comment, tag, imageID    },{},{}]
  
 
 
