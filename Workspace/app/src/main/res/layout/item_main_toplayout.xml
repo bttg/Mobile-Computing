@@ -100,7 +100,6 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="40dp"
             android:background="@drawable/main_morefuc_bg"
             android:onClick="onButtonClick"
             android:src="@mipmap/more_function" />
