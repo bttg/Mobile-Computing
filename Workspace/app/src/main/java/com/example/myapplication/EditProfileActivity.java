@@ -49,6 +49,7 @@ public class EditProfileActivity extends AppCompatActivity
 
         Intent intent = new Intent(this,MainPageForRecord.class);
         intent.putExtra("newNickname",newName);
+        startActivity(intent);
     }
     private void sendRequestWithOkhttp(int username){
         new Thread(new Runnable() {
