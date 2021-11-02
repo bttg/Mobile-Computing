@@ -67,17 +67,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@color/white">
+
         <ImageButton
             android:id="@+id/main_btn_map"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/it_maplabel"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:onClick="onButtonClick"
-            />
+            android:src="@mipmap/it_maplabel" />
 
         <Button
             android:id="@+id/main_record"
@@ -104,8 +104,6 @@
             android:background="@drawable/main_morefuc_bg"
             android:onClick="onButtonClick"
             android:src="@mipmap/more_function" />
-        
-        
     </RelativeLayout>
         
 
