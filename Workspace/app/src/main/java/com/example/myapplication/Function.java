@@ -27,7 +27,7 @@ public class Function extends AppCompatActivity
         // Log.v("test","sad");
         setContentView(R.layout.activity_function);
         Intent intent = getIntent();
-        userID = intent.getStringExtra("inputusername");
+        userID = intent.getStringExtra("username");
 
     }
 

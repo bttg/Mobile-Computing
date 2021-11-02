@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,16 +12,25 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PieChartActivity extends AppCompatActivity
 {
     private static String userID;
     PieChart pieChart;
+    public static List<PieHandler.Data> result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,30 +40,43 @@ public class PieChartActivity extends AppCompatActivity
         pieChart = findViewById(R.id.pieChart_view);
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
-        
+        sendRequestWithOkhttp(Integer.valueOf(userID));
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         //test only: get the pie data from arraylist
 
-        String[][] testArray = new String[5][2];
-        testArray[0][0] = "MaGe";
-        testArray[0][1] = "18";
-        testArray[1][0] = "ZhuGe";
-        testArray[1][1] = "19";
-        testArray[2][0] = "GuoGe";
-        testArray[2][1] = "20";
-        testArray[3][0] = "self";
-        testArray[3][1] = "21";
-        testArray[4][0] = "LuoGe";
-        testArray[4][1] = "100.56";
+//        String[][] testArray = new String[5][2];
+//        testArray[0][0] = "MaGe";
+//        testArray[0][1] = "18";
+//        testArray[1][0] = "ZhuGe";
+//        testArray[1][1] = "19";
+//        testArray[2][0] = "GuoGe";
+//        testArray[2][1] = "20";
+//        testArray[3][0] = "self";
+//        testArray[3][1] = "21";
+//        testArray[4][0] = "LuoGe";
+//        testArray[4][1] = "100.56";
 
         //add each data into the PieEntry
         List<PieEntry> entries = new ArrayList<>();
-        for(int i=0; i< testArray.length; i++)
-        {
-            entries.add(new PieEntry(Float.parseFloat(testArray[i][1]), testArray[i][0]));
+        if(result.isEmpty()){
+            entries.add(new PieEntry(Float.parseFloat("100"), "None"));
+        }else{
+
+            for(int i=0; i< result.size(); i++)
+            {
+                entries.add(new PieEntry(Float.parseFloat(result.get(i).getMoney()), result.get(i).getTag()));
+//                entries.add(new PieEntry(Float.parseFloat(testArray[i][1]), testArray[i][0]));
+            }
         }
 
-        PieDataSet set = new PieDataSet(entries, "Election Results");
+
+        PieDataSet set = new PieDataSet(entries, "Expenditure");
 
         //set some default colors
         set.addColor(Color.parseColor("#F60000"));
@@ -168,4 +191,51 @@ public class PieChartActivity extends AppCompatActivity
         pieChart.setData(pieData);
         pieChart.invalidate();
     }
+    private void sendRequestWithOkhttp(int username){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                MediaType JSON = MediaType.parse("application/json;charset=utf-8");
+                Log.d("before try","1");
+
+                try {
+                    Log.d("afterTry","2");
+                    //SignRequest requestbdy = new SignRequest();
+                    PieRequest requestbody = new PieRequest();
+                    requestbody.setId(username);
+                    RequestBody requestBody = RequestBody.create(JSON, String.valueOf(parseRequestBody(requestbody)));// modify
+                    OkHttpClient client = new OkHttpClient();
+                    Log.d("post","3");
+                    Request request = new Request.Builder()
+                            .url("http://139.180.180.99:8888/api/dataVisual")
+                            .post(requestBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    Log.d("get", responseData);
+                    PieHandler resultPie = new Gson().fromJson(responseData, PieHandler.class);
+                    int status = resultPie.getCode();
+                    Log.d("status", Integer.toString(status));
+                    result = resultPie.getData();
+                    for (int i=0; i<result.size();i++)
+                    {
+                       // Log.d("moeny",Double.toString(result.get(i).getMoney()));
+                        Log.d("tag",result.get(i).getTag());
+                    }
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+
+    private String parseRequestBody(PieRequest request) {
+        Gson gson = new Gson();
+        String json = gson.toJson(request);
+        return json;
+    }
+
 }
