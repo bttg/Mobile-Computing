@@ -1,4 +1,4 @@
-# API usage guide V1.5 by zzh
+# API usage guide FINAL by zzh
 ## Details
 * URL：http://139.180.180.99:8888/api
 * All the post requests should be **json form** as following:
@@ -125,7 +125,7 @@ fetch (max :30)
 * code: code
 * income: income(Stirng .2f)
 * expenditure : expenditure (String, .2f)
-* data: [{money, date, comment, tag, imageID    },{},{}]
+* data: [{money, date, comment, tag, imageID, lat, lng   },{},{}]
  
 
 
