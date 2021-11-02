@@ -41,6 +41,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     int month;
     int day;
     public static String inputusername;
+    public static String nickname;
     public static DataHandler datahandler;
 
     //头布局相关控件
@@ -62,10 +63,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=b8e23876");
         Intent intent = getIntent();
         inputusername = intent.getStringExtra("id");
+        nickname =  intent.getStringExtra("nickname");
         initTime();
         todaylistview = findViewById(R.id.main_lv);
         topnickname = findViewById(R.id.main_top_text_nickname);
-        topnickname.setText(inputusername);
+        topnickname.setText(nickname);
         //添加ListView的头布局
         addListViewHeaderView();
         mDatas = new ArrayList<>();
@@ -105,6 +107,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        Intent intent = getIntent();
+        nickname = intent.getStringExtra("newNickname");
+        topnickname.setText(nickname);
         loadServerData();
         setTopTextviewShow();
     }

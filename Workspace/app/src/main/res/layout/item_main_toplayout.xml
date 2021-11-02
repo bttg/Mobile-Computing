@@ -98,12 +98,15 @@
             android:id="@+id/main_btn_more_func"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/more_function"
             android:layout_alignParentRight="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
             android:layout_marginRight="20dp"
-            android:onClick="onButtonClick"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/main_morefuc_bg"
-            />
+            android:onClick="onButtonClick"
+            android:src="@mipmap/more_function" />
         
         
     </RelativeLayout>

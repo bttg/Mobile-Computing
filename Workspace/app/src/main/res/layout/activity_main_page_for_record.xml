@@ -33,8 +33,7 @@
             android:layout_toRightOf="@id/main_top_text_hello"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:gravity="center"
-            android:padding="10dp"/>
+            android:gravity="center" />
     </RelativeLayout>
     <!--All record information is displayed below the top line layout-->
     <!--Set an interval between each item and hide the dividing line-->
