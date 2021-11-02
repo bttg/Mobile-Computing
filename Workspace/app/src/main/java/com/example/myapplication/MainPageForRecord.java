@@ -51,6 +51,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     ImageButton maplabel;
     ImageButton morefuction;
     Button recordone;
+    TextView topnickname;
 
 
     @Override
@@ -63,6 +64,8 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         inputusername = intent.getStringExtra("id");
         initTime();
         todaylistview = findViewById(R.id.main_lv);
+        topnickname = findViewById(R.id.main_top_text_nickname);
+        topnickname.setText(inputusername);
         //添加ListView的头布局
         addListViewHeaderView();
         mDatas = new ArrayList<>();

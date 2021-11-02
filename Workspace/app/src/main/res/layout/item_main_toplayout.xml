@@ -87,7 +87,7 @@
             android:layout_toRightOf="@id/main_btn_map"
             android:background="@drawable/main_record_bg"
             android:gravity="center"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="60dp"
             android:onClick="onButtonClick"
             android:text="@string/record_onemore"
             android:textColor="@color/white"

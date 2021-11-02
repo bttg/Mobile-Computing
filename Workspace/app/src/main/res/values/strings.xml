@@ -21,7 +21,7 @@
 
     <string name="app_name">Bookkeeping</string>
     <string name="record_onemore">Record</string>
-    <string name="expenditrue">Expenditrue</string>
+    <string name="expenditrue">Expenditure</string>
     <string name="income">Income</string>
     <string name="Add_comment">Add comment</string>
     <string name="ensure">Ensure</string>
