@@ -75,8 +75,6 @@ public class AdapterforAccount extends BaseAdapter {
             timeTextview = view.findViewById(R.id.item_main_listview_time);
             moneyTextview = view.findViewById(R.id.item_main_listview_money);
         }
-
-
     }
 
 
