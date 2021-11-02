@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -117,10 +118,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     private void setTopTextviewShow() {
         //TODO 修改获得数据库收入以及支出
 //        float monthExpenditure = ManageDatabase.getmoneyonemonth(year,month,1);
-        double monthExpenditure = datahandler.getExpenditure();
-        double monthIncome = datahandler.getIncome();
-//        double monthIncome = ManageDatabase.getmoneyonemonth(year,month,0);
+        DecimalFormat df = new DecimalFormat("#.0");
 
+        String monthExpenditure = df.format(datahandler.getExpenditure());
+        String monthIncome = df.format(datahandler.getIncome());
+//        double monthIncome = ManageDatabase.getmoneyonemonth(year,month,0);
         topOutcomeNumber.setText("$" + monthExpenditure);
         topIncomeNumber.setText("$" + monthIncome);
     }
