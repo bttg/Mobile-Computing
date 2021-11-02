@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.DataHandler;
 import com.example.myapplication.R;
+import com.example.myapplication.database.DataTypeForShow;
 import com.example.myapplication.database.DataTypeForStore;
 import com.example.myapplication.database.Record_TypeforEachOne;
 
@@ -16,14 +18,15 @@ import java.util.List;
 
 public class AdapterforAccount extends BaseAdapter {
     Context context;
-    List<DataTypeForStore> mDatas;
+    List<DataHandler.Data> mDatas;
     LayoutInflater inflater;
 
-    public AdapterforAccount(Context context, List<DataTypeForStore> mDatas) {
+    public AdapterforAccount(Context context, List<DataHandler.Data> mDatas) {
         this.context = context;
         this.mDatas = mDatas;
         inflater = LayoutInflater.from(context);
     }
+
 
     @Override
     public int getCount() {
@@ -50,12 +53,12 @@ public class AdapterforAccount extends BaseAdapter {
         }else{
             holder = (ViewHolder) view.getTag();
         }
-        DataTypeForStore dataTypeForStore = mDatas.get(i);
-        holder.typeImageview.setImageResource(dataTypeForStore.getId_for_selected());
-        holder.typeTextview.setText(dataTypeForStore.getImage_name());
-        holder.commentTextview.setText(dataTypeForStore.getComment());
-        holder.timeTextview.setText(dataTypeForStore.getTime());
-        holder.moneyTextview.setText("$ "+String.valueOf(dataTypeForStore.getMoneyaccount()));
+        DataHandler.Data dataTypeForShow = mDatas.get(i);
+        holder.typeImageview.setImageResource(dataTypeForShow.getImageID());
+        holder.typeTextview.setText(dataTypeForShow.getTag());
+        holder.commentTextview.setText(dataTypeForShow.getComment());
+        holder.timeTextview.setText(dataTypeForShow.getDate());
+        holder.moneyTextview.setText("$ "+String.valueOf(dataTypeForShow.getMoney()));
         return view;
     }
 
