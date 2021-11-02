@@ -22,6 +22,7 @@ import com.iflytek.cloud.SpeechUtility;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -38,7 +39,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     int month;
     int day;
     public static String inputusername;
-    DataHandler datahandler;
+    public static DataHandler datahandler;
 
     //头布局相关控件
     View headerView;
@@ -54,13 +55,13 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
 
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=b8e23876");
         Intent intent = getIntent();
-        inputusername = intent.getStringExtra("username");
+        inputusername = intent.getStringExtra("id");
         initTime();
         todaylistview = findViewById(R.id.main_lv);
         //添加ListView的头布局
         addListViewHeaderView();
         mDatas = new ArrayList<>();
-        sendRequestWithOkhttp(Integer.valueOf(inputusername));
+//        sendRequestWithOkhttp(Integer.valueOf(inputusername));
         //Set up the adapter, load each row of data into the list
         adapter = new AdapterforAccount(this,mDatas);
         todaylistview.setAdapter(adapter);
@@ -88,6 +89,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     protected void onResume() {
         super.onResume();
         sendRequestWithOkhttp(Integer.valueOf(inputusername));
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         loadServerData();
         setTopTextviewShow();
     }
@@ -106,7 +112,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     //用这个方法从服务器读取一个数据列表，数据类型包括：
     private void loadServerData() {
         //TODO 修改获得数据库列表内容
+//        Log.d("handler",datahandler.getData().toString());
+
         List<DataHandler.Data> list  = datahandler.getData();
+        Log.d("list", list.toString());
+
         mDatas.clear();
         mDatas.addAll(list);
         adapter.notifyDataSetChanged();
@@ -134,10 +144,11 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
                     Log.d("get", responseData);
-                    datahandler = new Gson().fromJson(responseData, DataHandler.class);
-                    int status = datahandler.getCode();
+                    DataHandler serverresult = new Gson().fromJson(responseData, DataHandler.class);
+                    datahandler = new DataHandler(serverresult.getCode(),serverresult.getIncome(),serverresult.getExpenditure(),serverresult.getData());
+                    int status = serverresult.getCode();
                     Log.d("status", Integer.toString(status));
-                    List<DataHandler.Data> resdata = datahandler.getData();
+                    List<DataHandler.Data> resdata = serverresult.getData();
                     for (int i=0; i<resdata.size();i++)
                     {
                         Log.d("moeny",Double.toString(resdata.get(i).getMoney()));

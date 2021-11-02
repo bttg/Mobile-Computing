@@ -8,6 +8,12 @@ public class DataHandler {
     private double expenditure;
     private List<Data> data;
 
+    public DataHandler(int code, double income, double expenditure, List<Data> data) {
+        this.code = code;
+        this.income = income;
+        this.expenditure = expenditure;
+        this.data = data;
+    }
 
     public class Data {
         private double money;
@@ -52,7 +58,7 @@ public class DataHandler {
     }
 
     public List<Data> getData() {
-        return data;
+        return this.data;
     }
 
     public double getIncome() {
