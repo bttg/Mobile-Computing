@@ -198,7 +198,8 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
                 startActivity(intent3);
                 break;
             case R.id.main_btn_map:
-
+                Intent intent4 = new Intent(this,MapsActivity.class);
+                startActivity(intent4);
                 break;
         }
     }

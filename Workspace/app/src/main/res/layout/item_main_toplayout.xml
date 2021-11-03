@@ -75,7 +75,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:onClick="onButtonClick"
             android:src="@mipmap/it_maplabel" />
 
@@ -84,8 +84,13 @@
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_alignTop="@id/main_btn_map"
-            android:layout_marginLeft="60dp"
-            android:layout_toRightOf="@id/main_btn_map"
+            android:layout_alignParentStart="true"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="135dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="135dp"
             android:background="@drawable/main_record_bg"
             android:gravity="center"
             android:onClick="onButtonClick"
@@ -99,7 +104,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
             android:background="@drawable/main_morefuc_bg"
             android:onClick="onButtonClick"
             android:src="@mipmap/more_function" />
