@@ -21,12 +21,13 @@
         android:text="Drink"
         android:textSize="20sp"
         android:textStyle="bold" />
+
     <TextView
         android:id="@+id/item_main_listview_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A bottle of rum"
         android:layout_below="@id/item_main_listview_time"
+        android:text="A bottle of rum"
         android:textSize="20sp"
         android:textStyle="bold" />
 
