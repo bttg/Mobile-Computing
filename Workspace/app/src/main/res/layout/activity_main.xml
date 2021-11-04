@@ -5,73 +5,69 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_title"
-        android:text="Money"
-        android:textSize="35sp"
         android:gravity="center"
-        >
-    </TextView>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:text="@string/welcome"
+        android:textSize="35sp"></TextView>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/username_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Username:" >
-        </TextView>
+            android:text="      Username:"></TextView>
 
         <EditText
             android:id="@+id/username_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
-            android:singleLine="true"
-            android:hint="Please insert your username" >
-        </EditText>
+            android:hint="Please enter your username"
+            android:singleLine="true"></EditText>
 
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/password_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Password:" >
-        </TextView>
+            android:text="      Password:"></TextView>
 
         <EditText
             android:id="@+id/password_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
-            android:singleLine="true"
+            android:hint="Please enter your password"
             android:inputType="textPassword"
-            android:hint="Please insert your password" >
-        </EditText>
+            android:singleLine="true"></EditText>
     </LinearLayout>
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+
             <Button
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log in" >
-            </Button>
+                android:text="Log in"></Button>
 
             <Button
                 android:id="@+id/signup"

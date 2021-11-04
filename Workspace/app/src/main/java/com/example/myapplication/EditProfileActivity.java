@@ -62,7 +62,7 @@ public class EditProfileActivity extends AppCompatActivity
                     Log.d("afterTry","2");
                     //SignRequest requestbdy = new SignRequest();
                     ProfileRequest requestbody = new ProfileRequest();
-                    requestbody.setId(250);
+                    requestbody.setId(username);
                     requestbody.setNewEmail(newEmail);
                     requestbody.setNewName(newName);
                     requestbody.setNewPassword(newPass);
