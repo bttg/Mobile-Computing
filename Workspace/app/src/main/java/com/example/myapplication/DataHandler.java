@@ -1,8 +1,9 @@
 package com.example.myapplication;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DataHandler {
+public class DataHandler implements Serializable{
     private int code;
     private double income;
     private double expenditure;
@@ -15,7 +16,7 @@ public class DataHandler {
         this.data = data;
     }
 
-    public class Data {
+    public class Data implements Serializable{
         private double money;
         private String tag;
         private String date;

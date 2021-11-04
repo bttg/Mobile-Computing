@@ -3,31 +3,42 @@ package com.example.myapplication;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.myapplication.databinding.ActivityMapsBinding;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
+    private Marker markerTestPosition;
+    private List<DataHandler.Data> Data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
+        Data = (List<DataHandler.Data>) getIntent().getSerializableExtra("Data");
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     /**
@@ -43,9 +54,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+//        Log.d("checkPoint","point 12");
+
+        for(int i=0; i<Data.size(); i++)
+        {
+
+            Log.d("Tag",Data.get(i).getTag());
+            Log.d("Lat",Data.get(i).getLat());
+            Log.d("Lng",Data.get(i).getLng());
+
+            String tag = Data.get(i).getTag();
+            Double money = Data.get(i).getMoney();
+         //   String date = Data.get(i).getDate();
+            Double latitude = Double.parseDouble(Data.get(i).getLat());
+            Double longitude = Double.parseDouble(Data.get(i).getLng());
+
+            if(latitude!=-1000)
+            {
+                LatLng position = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(position).title(tag + ": $" + money));
+             //   newPlace.setSnippet("Test");
+
+            }
+
+        }
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+//        LatLng[] pList = new LatLng[5];
+//        pList[0] = new LatLng(-34, 151);
+//        pList[1] = new LatLng(-33, 150);
+//        pList[2] = new LatLng(-32, 149);
+//        pList[3] = new LatLng(-31, 148);
+//        pList[4] = new LatLng(-30, 147);
+//
+//        for(int i=0; i<5; i++)
+//        {
+//            mMap.addMarker(new MarkerOptions().position(pList[i]).title("Marker in Sydney"));
+//        }
+//        LatLng sydney = new LatLng(-34, 151);
+//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+
+        LatLng position = new LatLng(Double.parseDouble(Data.get(Data.size()-1).getLat()), Double.parseDouble(Data.get(Data.size()-1).getLng()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
+
+
     }
 }
