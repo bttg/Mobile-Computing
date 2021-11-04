@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     if(parseJson(responseData).get("status").equals("200")){
                         String id = (String) parseJson(responseData).get("id");
                         String nickname = (String) parseJson(responseData).get("nickname");
+                        Log.d("nick", nickname);
                         String email = (String) parseJson(responseData).get("email");
                         Looper.prepare();
                         Intent intent = new Intent(MainActivity.this, MainPageForRecord.class);

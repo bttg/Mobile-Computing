@@ -69,9 +69,9 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         inputusername = intent.getStringExtra("id");
         nickname =  intent.getStringExtra("nickname");
 
-        if (inputusername!=null)
+        if (intent.getStringExtra("id")!=null)
         {
-            gv = new globalVariable(inputusername);
+            gv = new globalVariable(intent.getStringExtra("id"));
         }
 
 
@@ -86,6 +86,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         //Set up the adapter, load each row of data into the list
         adapter = new AdapterforAccount(this,mDatas);
         todaylistview.setAdapter(adapter);
+        Log.d("oncreate","oncreate");
 
     }
 
@@ -133,6 +134,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         topnickname.setText(nickname);
         loadServerData();
         setTopTextviewShow();
+        Log.d("onResume","onResume");
     }
 
     private void setTopTextviewShow() {
