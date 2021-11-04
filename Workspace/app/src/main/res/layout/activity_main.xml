@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/backgroundmain">
+    android:background="@mipmap/backgroundmain"
+    android:theme="@style/Theme.MyApplication.NoActionBar">
 
     <TextView
         android:id="@+id/text_title"
