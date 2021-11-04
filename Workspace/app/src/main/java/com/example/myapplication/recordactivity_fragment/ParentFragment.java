@@ -226,7 +226,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         @Override
         public void onResult(RecognizerResult recognizerResult, boolean b) {
             String result_string = recognizerResult.getResultString();
-            textViewforcomment.append(result_string);
+            textViewforcomment.setText(result_string);
         }
 
         @Override
