@@ -107,15 +107,6 @@ get monthly data.
 * code:code (int)
 
 
-## /heatMap
-### post:
-* id (int)
-
-### get:
-Note: only send the expenditure to the client (EOI=0)
-* {"data":[{expenditure, tag, lat, lng},{expenditure, tag, lat, lng},{expenditure, tag, lat, lng}....],"code":200 or 400 (int)}
-
-
 ## /fetchData
 fetch (max :30)
 ### post:
@@ -127,6 +118,12 @@ fetch (max :30)
 * expenditure : expenditure (String, .2f)
 * data: [{money, date, comment, tag, imageID, lat, lng   },{},{}]
  
+ ## /emailMe
+ ### post:
+ * id: id
+ 
+ ### get:
+ * String
 
 
 
