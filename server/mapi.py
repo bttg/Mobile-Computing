@@ -44,7 +44,9 @@ def bookkeeping():
     comment = data['comment']
     tag = data['tag']
     address = data['address']
-    result = mdb.bookkeeping(id, expenditure, EOI, imageID, comment, tag, address)
+    lat = data['lat']
+    lng = data['lng']
+    result = mdb.bookkeeping(id, expenditure, EOI, imageID, comment, tag, address,lat,lng)
 
     return result
 
@@ -56,6 +58,51 @@ def dataVisual():
     result = mdb.dataVisual(id)
 
     return result
+
+
+@app.route('/api/modifyUser', methods=['POST'])
+def modifyUser():
+    data = request.get_data()
+    data = json.loads(data)
+
+    id = data['id']
+    nickname = data['newNickname']
+    password = data['newPassword']
+    eMail = data['newEmail']
+    result = mdb.modifyUser(id,nickname,password,eMail)
+
+    return result
+
+@app.route('/api/fetchData', methods=['POST'])
+def fetchData():
+    data = request.get_data()
+    data = json.loads(data)
+
+    id = data['id']
+    result = mdb.fetchData(id)
+
+    return result
+
+@app.route('/api/emailMe', methods=['POST'])
+def emailMe():
+    data = request.get_data()
+    data = json.loads(data)
+
+    id = data['code']
+    mdb.emailMe(id)
+
+    return "The email has been sent."
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8888, debug=True)
