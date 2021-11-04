@@ -1,12 +1,14 @@
 package com.example.myapplication.recordactivity_fragment;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.inputmethodservice.KeyboardView;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -24,6 +26,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -41,6 +44,12 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.iflytek.cloud.RecognizerListener;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechRecognizer;
+import com.iflytek.cloud.SpeechUtility;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -120,9 +129,18 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SpeechUtility.createUtility((Activity) getActivity(), SpeechConstant.APPID +"=b8e23876");
         dataTypeForStore = new DataTypeForStore();
         dataTypeForStore.setImage_name("Others");
         dataTypeForStore.setId_for_selected(R.mipmap.ic_others_fs);
+        ImageButton record = (ImageButton) getActivity().findViewById(R.id.recordactivity_fragment_relativelayout_microphone);
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StartRecording();
+            }
+        });
+
 
         //set all properties of location request
         locationRequest = new LocationRequest();
@@ -151,6 +169,8 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         };
 
         addressString = updateGPS();
+
+
 
     } //end of onCreate
 
@@ -184,6 +204,40 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         dataTypeForStore.setMonth(month);
         dataTypeForStore.setDay(day);
     }
+    class MyRecoListener implements RecognizerListener {
+        @Override
+        public void onVolumeChanged(int i, byte[] bytes) {
+
+        }
+
+        @Override
+        public void onBeginOfSpeech() {
+
+        }
+
+        @Override
+        public void onEndOfSpeech() {
+
+        }
+
+        @Override
+        public void onResult(RecognizerResult recognizerResult, boolean b) {
+            String result_string = recognizerResult.getResultString();
+            textViewforcomment.append(result_string);
+        }
+
+        @Override
+        public void onError(SpeechError speechError) {
+
+        }
+
+        @Override
+        public void onEvent(int i, int i1, int i2, Bundle bundle) {
+
+        }
+
+    }
+
 
     private void setGridViewPressOnClickListener() {
         gridViewforttype.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -256,8 +310,9 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
                 makedialogvisible();
 
             case R.id.recordactivity_fragment_relativelayout_microphone:
+                //TODO recording
 
-                break;
+
         }
     }
 
@@ -402,6 +457,22 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
             inputMethodManager.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS);
         }
     };
+
+    public void StartRecording(){
+        SpeechRecognizer mIat = SpeechRecognizer.createRecognizer((Activity)getActivity(), null);
+        mIat.setParameter(SpeechConstant.CLOUD_GRAMMAR, null);
+        mIat.setParameter(SpeechConstant.SUBJECT, null);
+        mIat.setParameter(SpeechConstant.RESULT_TYPE,"plain");
+        mIat.setParameter(SpeechConstant.DOMAIN, "iat");
+        mIat.setParameter(SpeechConstant.ENGINE_TYPE,"cloud");
+        mIat.setParameter(SpeechConstant.LANGUAGE, "en_us");
+        mIat.setParameter(SpeechConstant.VAD_BOS,"4000");
+        mIat.setParameter(SpeechConstant.VAD_EOS,"1000");
+        mIat.setParameter(SpeechConstant.ASR_PTT,"0");
+        mIat.startListening(new MyRecoListener());
+    }
+
+
 
 
 

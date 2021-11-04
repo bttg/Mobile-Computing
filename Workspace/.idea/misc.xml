@@ -26,6 +26,8 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.296195652173913" />
+        <entry key="app/src/main/res/layout/expenditure_fragment_gridview.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/fragment_expenditure.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4036458333333333" />

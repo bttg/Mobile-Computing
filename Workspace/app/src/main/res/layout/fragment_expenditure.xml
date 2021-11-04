@@ -75,6 +75,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_alignParentRight="true"
+            android:onClick="onClick"
             android:src="@mipmap/it_microphone" />
 
         <TextView

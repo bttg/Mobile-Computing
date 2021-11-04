@@ -77,7 +77,6 @@ public class Function extends AppCompatActivity
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
-
                 }
 
                 catch (Exception e)

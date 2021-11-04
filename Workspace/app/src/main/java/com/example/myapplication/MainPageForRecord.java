@@ -63,8 +63,6 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page_for_record);
-
-        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=b8e23876");
         Intent intent = getIntent();
         inputusername = intent.getStringExtra("id");
         nickname =  intent.getStringExtra("nickname");
