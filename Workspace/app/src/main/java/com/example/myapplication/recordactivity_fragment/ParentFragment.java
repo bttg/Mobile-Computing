@@ -133,14 +133,15 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         dataTypeForStore = new DataTypeForStore();
         dataTypeForStore.setImage_name("Others");
         dataTypeForStore.setId_for_selected(R.mipmap.ic_others_fs);
-        ImageButton record = (ImageButton) getActivity().findViewById(R.id.recordactivity_fragment_relativelayout_microphone);
+        /*
+        ImageButton record = (ImageButton) getView().findViewById(R.id.recordactivity_fragment_relativelayout_microphone);
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StartRecording();
             }
         });
-
+        */
 
         //set all properties of location request
         locationRequest = new LocationRequest();

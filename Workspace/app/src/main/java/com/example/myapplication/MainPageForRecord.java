@@ -66,12 +66,16 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
         Intent intent = getIntent();
         inputusername = intent.getStringExtra("id");
         nickname =  intent.getStringExtra("nickname");
+        /*
+        if (intent.getStringExtra("id")!=null)
+        {
+            gv = new globalVariable(intent.getStringExtra("id"));
+        }*/
 
         if (intent.getStringExtra("id")!=null)
         {
             gv = new globalVariable(intent.getStringExtra("id"));
         }
-
 
         initTime();
         todaylistview = findViewById(R.id.main_lv);
@@ -256,7 +260,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     }
 
     public String sendUsername(){
-        return inputusername;
+        return gv.getFixedID();
     }
 
     @Override

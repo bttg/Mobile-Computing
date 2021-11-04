@@ -30,6 +30,8 @@ import okhttp3.Response;
 public class IncomeFragment extends ParentFragment {
 
 
+    public static final int NoAddress = -1000;
+
     @Override
     public void fillGridView() {
         super.fillGridView();
@@ -62,8 +64,8 @@ public class IncomeFragment extends ParentFragment {
         }else{
             comments = dataTypeForStore.getComment();
         }
-        double lat = -1000;
-        double lng = -1000;
+        double lat = NoAddress;
+        double lng = NoAddress;
         sendRequestWithOkhttp(username, expenseOrIncome,imageId, addressString, tag, money, comments,lat,lng);
     }
 
@@ -83,12 +85,7 @@ public class IncomeFragment extends ParentFragment {
                     bkpRequest.setComment(comments);
                     bkpRequest.setLat(lat);
                     bkpRequest.setLng(lng);
-//                    RequestBody requestBody = new FormBody.Builder()
-//                            .add("account", username)
-//                            .add("nickname", nickname)
-//                            .add("password", password)
-//                            .add("email", email)
-//                            .build();
+
                     RequestBody requestBody = RequestBody.create(JSON, String.valueOf(parseRequestBody(bkpRequest)));
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
