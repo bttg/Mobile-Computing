@@ -86,6 +86,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
     GridView gridViewforttype;
     List<Record_TypeforEachOne> typelist;
     AdapterForRecordType adapter;
+    ImageButton imageButtonmicro;
     DataTypeForStore dataTypeForStore;//Save the data that needs to be inserted into the database in object format
 
     private static final int PERMISSIONS_FINE_LOCATION = 99; //arbitrary choice
@@ -186,6 +187,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         fillGridView();
         //Set the click event of each item in the GridView
         setGridViewPressOnClickListener();
+        setImageButtonmicro();
         return view;
     }
 
@@ -257,6 +259,15 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         });
     }
 
+    private void setImageButtonmicro(){
+        imageButtonmicro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StartRecording();
+            }
+        });
+    }
+
     public void fillGridView() {
         typelist = new ArrayList<>();
         adapter = new AdapterForRecordType(getContext(), typelist);
@@ -272,6 +283,7 @@ public abstract class ParentFragment extends Fragment implements View.OnClickLis
         textViewforcomment = view.findViewById(R.id.recordactivity_fragment_relativelayout_comment);
         textViewfortime = view.findViewById(R.id.recordactivity_fragment_relativelayout_time);
         gridViewforttype = view.findViewById(R.id.recordactivity_fragment_relativelayout_gridview);
+        imageButtonmicro = view.findViewById(R.id.recordactivity_fragment_relativelayout_microphone);
         textViewforcomment.setOnClickListener(this);
         textViewfortime.setOnClickListener(this);
 
