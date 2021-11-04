@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_eidt_profile.xml" value="0.21331521739130435" />
-        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_record_bg.xml" value="0.26296296296296295" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/drawable/main_sign_bg.xml" value="0.26296296296296295" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_eidt_profile.xml" value="0.264" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_function.xml" value="0.22916666666666666" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_main_page_for_record.xml" value="0.12335359675785208" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_maps.xml" value="0.22916666666666666" />
+        <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_pie_chart.xml" value="0.22916666666666666" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_record.xml" value="0.12335359675785208" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_settings.xml" value="0.21331521739130435" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/activity_sign_up.xml" value="0.21331521739130435" />
@@ -26,8 +31,6 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.296195652173913" />
-        <entry key="app/src/main/res/layout/expenditure_fragment_gridview.xml" value="0.16770833333333332" />
-        <entry key="app/src/main/res/layout/fragment_expenditure.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.296195652173913" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4036458333333333" />

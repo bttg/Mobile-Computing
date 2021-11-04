@@ -5,46 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="120dp"
+        android:layout_height="34dp"
+        android:text="Edit_Nickname"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="72dp" />
+
     <EditText
         android:id="@+id/edit_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="72dp"
         android:ems="10"
         android:hint="New Nickname"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="New Password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_nickname" />
 
+
     <EditText
         android:id="@+id/edit_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="New Email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
-
     <Button
         android:id="@+id/BtnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="163dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/main_record_bg"
         android:onClick="btnSaveProfile"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"

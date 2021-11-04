@@ -2,16 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@mipmap/backgroundmain">
 
     <TextView
         android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingTop="30dp"
         android:text="@string/welcome"
-        android:textSize="35sp"></TextView>
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="40sp"></TextView>
     <LinearLayout
+        android:paddingTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -22,6 +27,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="      Username:"></TextView>
 
         <EditText
@@ -29,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
+            android:textColor="@color/black"
             android:hint="Please enter your username"
             android:singleLine="true"></EditText>
 
@@ -45,6 +53,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="      Password:"></TextView>
 
         <EditText
@@ -52,6 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
+            android:textColor="@color/black"
             android:hint="Please enter your password"
             android:inputType="textPassword"
             android:singleLine="true"></EditText>
@@ -61,17 +72,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center"
             >
 
             <Button
                 android:id="@+id/login"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:background="@drawable/main_sign_bg"
                 android:text="Log in"></Button>
 
             <Button
                 android:id="@+id/signup"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:background="@drawable/main_sign_bg"
                 android:layout_height="wrap_content"
                 android:text="Sign Up" >
             </Button>

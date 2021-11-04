@@ -13,4 +13,5 @@
     <color name="yellow_FFFF33">#FFFFFF33</color>
     <color name="green_33CC33">#FF33CC33</color>
     <color name="red_FF3333">#FFFF3333</color>
+    <color name="grey_CCCCCC">#FFCCCCCC</color>
 </resources>
