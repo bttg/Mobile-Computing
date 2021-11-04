@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -152,6 +153,14 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
 //        Log.d("handler",datahandler.getData().toString());
 
         List<DataHandler.Data> list  = datahandler.getData();
+
+        //added to ensure the data are captured
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Log.d("list", list.toString());
 
         mDatas.clear();
@@ -212,13 +221,36 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
                 startActivity(intent2);
                 break;
             case R.id.main_btn_more_func:
+                Log.d("checkPoint","point xx");
                 Intent intent3 = new Intent(this, Function.class);
                 intent3.putExtra("username", inputusername);
                 startActivity(intent3);
                 break;
             case R.id.main_btn_map:
-                Intent intent4 = new Intent(this,MapsActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("Data", mDatas);
+//                List<DataHandler.Data> mDatas;
+                Log.d("checkPoint","point 1");
+                    Intent intent4 = new Intent(this,MapsActivity.class);
+
+//                if(mDatas!=null)
+//                {
+//                    Log.d("data content",mDatas.get(0).getTag());
+//                    Log.d("data content",mDatas.get(0).getLat());
+//                    Log.d("data content",mDatas.get(1).getTag());
+//                    Log.d("data content",mDatas.get(1).getLat());
+//                }
+        //        intent4.putExtra("Data","Data Test");
+                intent4.putExtra("Data",(Serializable) mDatas);
+
+                try {
+                    TimeUnit.SECONDS.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+//                (Serializable) mDatas
                 startActivity(intent4);
+
                 break;
         }
     }
@@ -231,4 +263,5 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
 
     }
+
 }

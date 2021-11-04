@@ -19,6 +19,8 @@
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_listview.xml" value="0.2" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/layout/item_main_toplayout.xml" value="0.12335359675785208" />
         <entry key="..\:/Githubfile/Mobile-Computing/Workspace/app/src/main/res/menu/menu_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/tools/Android Studio Workspace/mobileproject test/Mobile-Computing/Workspace/app/src/main/res/layout/activity_map_test.xml" value="0.2296875" />
+        <entry key="..\:/tools/Android Studio Workspace/mobileproject test/Mobile-Computing/Workspace/app/src/main/res/layout/activity_maps.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2489139554207937" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2776268115942029" />
@@ -31,7 +33,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
