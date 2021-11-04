@@ -2,111 +2,122 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@mipmap/backgroundmain"
     android:padding="12px"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register as New User"
         android:gravity="center"
-        android:textSize="30sp"
-        >
-    </TextView>
+        android:paddingTop="70dp"
+        android:text="Register a New Account"
+        android:textColor="@color/white"
+        android:textSize="30sp"></TextView>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/uname_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Username:" >
-        </TextView>
+            android:textStyle="bold"
+
+            android:text="      Username:"></TextView>
 
         <EditText
+            android:paddingTop="70dp"
             android:id="@+id/uname_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
             android:singleLine="true"
-            android:hint="Please insert your username" >
+            android:hint="Please enter your username" >
         </EditText>
 
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/upass_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Password:" >
-        </TextView>
+            android:textStyle="bold"
+            android:text="      Password:"></TextView>
 
         <EditText
+            android:paddingTop="15dp"
             android:id="@+id/upass_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
             android:singleLine="true"
             android:inputType="textPassword"
-            android:hint="Please insert your password" >
+            android:hint="Please enter your password" >
         </EditText>
 
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/nickname_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Nickname:" >
-        </TextView>
+            android:textStyle="bold"
+            android:text="      Nickname:"></TextView>
 
         <EditText
+            android:paddingTop="15dp"
             android:id="@+id/nickname_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
             android:singleLine="true"
-            android:hint="Please insert your nickname" >
+            android:hint="Please enter your nickname" >
         </EditText>
 
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <TextView
             android:id="@+id/email_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Email:" >
-        </TextView>
+            android:textStyle="bold"
+            android:text="      Email:"></TextView>
 
         <EditText
+            android:paddingTop="15dp"
             android:id="@+id/email_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="7"
             android:singleLine="true"
-            android:hint="Please insert your email" >
+            android:hint="Please enter your email" >
         </EditText>
 
     </LinearLayout>
@@ -115,8 +126,17 @@
         android:id="@+id/submitbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="R e g i s t e r"
+        android:background="@drawable/main_sign_bg"
         android:layout_margin="40dp">
     </Button>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="314dp"
+        android:layout_height="188dp"
+        android:layout_gravity="center"
+        android:paddingTop="50dp"
+        app:srcCompat="@mipmap/cat_launcher" />
 
 </LinearLayout>

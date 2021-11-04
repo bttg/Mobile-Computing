@@ -24,7 +24,7 @@
     <string name="expenditrue">Expenditure</string>
     <string name="income">Income</string>
     <string name="Add_comment">Add comment</string>
-    <string name="ensure">Ensure</string>
+    <string name="enter">Enter</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_maps">Map</string>
 </resources>
