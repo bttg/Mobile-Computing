@@ -74,7 +74,7 @@ public class IncomeFragment extends ParentFragment {
                 MediaType JSON = MediaType.parse("application/json;charset=utf-8");
                 try {
                     BookkeepingRequest bkpRequest = new BookkeepingRequest();
-                    bkpRequest.setId(250);
+                    bkpRequest.setId(Integer.valueOf(username));
                     bkpRequest.setEOI(expenseOrIncome);
                     bkpRequest.setImageID(imageId);
                     bkpRequest.setAddress(address);

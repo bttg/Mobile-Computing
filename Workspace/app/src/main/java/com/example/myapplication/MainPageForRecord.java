@@ -156,7 +156,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
 
         //added to ensure the data are captured
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -244,7 +244,7 @@ public class MainPageForRecord extends AppCompatActivity implements View.OnClick
                 intent4.putExtra("Data",(Serializable) mDatas);
 
                 try {
-                    TimeUnit.SECONDS.sleep(10);
+                    TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

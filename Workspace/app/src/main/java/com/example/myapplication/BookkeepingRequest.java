@@ -15,7 +15,7 @@ public class BookkeepingRequest {
 
 
     public void setId(int id) {
-        this.id = 250;
+        this.id = id;
     }
     public void setExpenditure(float expenditure) {
         this.expenditure = expenditure;
