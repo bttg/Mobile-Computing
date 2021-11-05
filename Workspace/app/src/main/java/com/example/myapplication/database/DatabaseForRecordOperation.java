@@ -36,7 +36,7 @@ public class DatabaseForRecordOperation extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sqlite, new Object[] {"Recreation", R.mipmap.ic_recreation,R.mipmap.ic_recreation_fs,0});
         sqLiteDatabase.execSQL(sqlite, new Object[] {"Snacks", R.mipmap.ic_snacks,R.mipmap.ic_snacks_fs,0});
         sqLiteDatabase.execSQL(sqlite, new Object[] {"Drink", R.mipmap.ic_drink,R.mipmap.ic_drink_fs,0});
-        sqLiteDatabase.execSQL(sqlite, new Object[] {"Learn", R.mipmap.ic_learn,R.mipmap.ic_learn_fs,0});
+        sqLiteDatabase.execSQL(sqlite, new Object[] {"Education", R.mipmap.ic_learn,R.mipmap.ic_learn_fs,0});
         sqLiteDatabase.execSQL(sqlite, new Object[] {"Medical", R.mipmap.ic_medical,R.mipmap.ic_medical_fs,0});
         sqLiteDatabase.execSQL(sqlite, new Object[] {"House", R.mipmap.ic_house,R.mipmap.ic_house_fs,0});
         sqLiteDatabase.execSQL(sqlite, new Object[] {"Fees", R.mipmap.ic_fees,R.mipmap.ic_fees_fs,0});
