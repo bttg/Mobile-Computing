@@ -19,7 +19,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-    <string name="app_name">Bookkeeping</string>
+    <string name="app_name">MeMeow Wallet</string>
     <string name="record_onemore">Record</string>
     <string name="expenditrue">Expenditure</string>
     <string name="income">Income</string>
