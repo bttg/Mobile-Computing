@@ -12,28 +12,30 @@
     <!--The layout of the top line of the main software interface-->
     <RelativeLayout
         android:id="@+id/main_top_layout"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_width="match_parent">
+        >
+
         <TextView
             android:id="@+id/main_top_text_hello"
-            android:text="Hello, "
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:gravity="center"
             android:padding="10dp"
-            />
+            android:text="Hello, "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/main_top_text_nickname"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/black"
             android:layout_toRightOf="@id/main_top_text_hello"
-            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:gravity="center" />
+            android:textStyle="bold" />
     </RelativeLayout>
     <!--All record information is displayed below the top line layout-->
     <!--Set an interval between each item and hide the dividing line-->

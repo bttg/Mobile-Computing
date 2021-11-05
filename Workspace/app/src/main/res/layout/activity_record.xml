@@ -9,34 +9,35 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        >
+        android:layout_height="67dp"
+        android:paddingTop="25dp">
+
         <ImageView
             android:id="@+id/recordactivity_imageview_back"
-            android:src="@mipmap/ih_error_label"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
             android:onClick="onClick"
-            android:layout_marginLeft="12dp"/>
+            android:src="@mipmap/ih_error_label" />
 
-<!--        <TableLayout-->
-<!--            android:id="@+id/recordactivity_imageview_tablayouts"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:tabTextColor = "@color/grey_F3F3F3"-->
-<!--            app:tabMode = "fixed"-->
-<!--            app:tabGravity =  "center"-->
-<!--            app:tabSelectedTextColor = "@color/black"-->
-<!--            android:layout_centerHorizontal="true"/>-->
+        <!--        <TableLayout-->
+        <!--            android:id="@+id/recordactivity_imageview_tablayouts"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:tabTextColor = "@color/grey_F3F3F3"-->
+        <!--            app:tabMode = "fixed"-->
+        <!--            app:tabGravity =  "center"-->
+        <!--            app:tabSelectedTextColor = "@color/black"-->
+        <!--            android:layout_centerHorizontal="true"/>-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/recordactivity_imageview_tablayouts"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:tabTextColor = "@color/grey_999999"
-            app:tabMode = "fixed"
-            app:tabGravity =  "center"
-            app:tabSelectedTextColor = "@color/black"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            app:tabGravity="center"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/grey_999999" />
     </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
